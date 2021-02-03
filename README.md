@@ -7,12 +7,11 @@
 <img width=200 align=center src="https://i.imgur.com/BFqBUI8.png"></img>
 </p>
 
-### Projeto 
+### 🚀 Projeto 
 <p>📝 NicolsFlix, aplicativo que exibe filmes populares,recomendados, tendências, filmes similares ao qual você selecionou, onde é possível salvar o filmes escolhido. Ao salvar o filme ele irá direto a sua lista de filmes. Api usada no projeto para exibição dos filmes foi a [TheMovieDb](https://www.themoviedb.org/)
 
 </p>
 
-<img href=""></img>
 
 ### 🔧 Arquitetura
 - > MVVM  Model - View - ViewModel
