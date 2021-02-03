@@ -1,0 +1,11 @@
+package com.nicolas.nicolsflix
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+
+class NicolsFlixActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_nicolsflix)
+    }
+}
