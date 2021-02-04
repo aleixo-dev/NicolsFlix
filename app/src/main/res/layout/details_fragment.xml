@@ -149,7 +149,7 @@
                 android:background="@drawable/round_text_interface"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:text="Similiar"
+                android:text="Similar"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold"
