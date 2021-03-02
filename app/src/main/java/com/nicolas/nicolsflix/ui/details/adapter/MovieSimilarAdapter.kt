@@ -36,12 +36,14 @@ class MovieSimilarAdapter(
         private val imgRecommend: ImageView = itemView.imgRecommend
 
         fun bind(movie: Movie) {
+
             Picasso.get().load("https://image.tmdb.org/t/p/w500/${movie.poster}")
                 .into(imgRecommend)
+
             itemView.setOnClickListener {
                 movieClickListener.invoke(movie)
-            }
 
+            }
         }
     }
 }

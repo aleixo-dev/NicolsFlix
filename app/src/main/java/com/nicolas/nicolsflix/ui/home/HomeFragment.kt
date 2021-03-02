@@ -1,15 +1,14 @@
 package com.nicolas.nicolsflix.ui.home
 
 import android.os.Bundle
-
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
-
 import com.nicolas.nicolsflix.ui.home.adapter.PopularAdapter
 import com.nicolas.nicolsflix.ui.home.adapter.RecommendAdapter
 import com.nicolas.nicolsflix.ui.home.adapter.TrendingAdapter
@@ -21,10 +20,12 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initMyButtonList()
         initRecyclerViewPopularMovie()
         initRecyclerViewTrendingMovie()
         initRecyclerViewRecommendMovie()
+
     }
 
     private fun initRecyclerViewPopularMovie() {
@@ -35,9 +36,11 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 layoutManager =
                     LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
                 setHasFixedSize(true)
-                adapter = PopularAdapter(listMovies) {
+                adapter = PopularAdapter(listMovies) { movie ->
 
-                    val directions = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(it)
+                    val directions =
+                        HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
+
                     findNavController().navigate(directions)
                 }
             }

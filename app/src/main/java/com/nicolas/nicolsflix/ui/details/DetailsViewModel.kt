@@ -54,9 +54,6 @@ class DetailsViewModel(private val databaseDataSource: DatabaseDataSource) : Vie
             override fun onFailure(call: Call<MoviePopularResponseBody>, t: Throwable) {
                 TODO("Not yet implemented")
             }
-
         })
     }
-
-
 }

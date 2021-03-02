@@ -24,8 +24,8 @@ class MyListFragment : Fragment(R.layout.my_list_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getMyListMovie()
 
+        getMyListMovie()
         backMyListMovies.setOnClickListener {
             findNavController().popBackStack()
         }

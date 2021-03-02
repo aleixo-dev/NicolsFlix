@@ -1,9 +1,9 @@
 package com.nicolas.nicolsflix.ui.details
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -18,7 +18,10 @@ import com.nicolas.nicolsflix.utils.FormatDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.details_fragment.*
 
+
 class DetailsFragment : Fragment(R.layout.details_fragment) {
+
+    private val arguments: DetailsFragmentArgs by navArgs()
 
     private val viewModel: DetailsViewModel by viewModels(
         factoryProducer = {
@@ -26,7 +29,6 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
             DetailsViewModelFactory(databaseDataSource = DatabaseDataSource(database.movieDao))
         }
     )
-    private val args: DetailsFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,21 +37,27 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
 
     private fun initComponentsDetails() {
 
-        val detailsMovieArgs = args.movie
+        val detailsMovieArgs = arguments.movie
         backDetails.setOnClickListener {
             findNavController().popBackStack()
         }
 
         textNameMovie.text = detailsMovieArgs.title
         textValueRatingMovie.text = detailsMovieArgs.rating
-        textDateMovie.text = detailsMovieArgs.date?.let { FormatDate.getDateMovie(it) }
+        textDateMovie.text = detailsMovieArgs.date.let { FormatDate.getDateMovie(it.toString()) }
+
         textDescriptionMovie.text = detailsMovieArgs.description
         Picasso.get().load("https://image.tmdb.org/t/p/w500/${detailsMovieArgs.posterDetails}")
             .into(imagePosterMovie)
 
         saveMovieToList(detailsMovieArgs)
 
-        detailsMovieArgs.id?.let { viewModel.getMovieSimilar(it) }
+        detailsMovieArgs.id.let {
+            if (it != null) {
+                viewModel.getMovieSimilar(it)
+            }
+        }
+
         viewModel.listMovieSimilar.observe(viewLifecycleOwner) { listMovie ->
 
             if (listMovie.isNullOrEmpty()) {
@@ -88,12 +96,12 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
     private fun addMovieMyList(movie: Movie) = View.OnClickListener {
         viewModel.insertMovieMyList(movie)
         imageSaveMovie.setImageResource(R.drawable.ic_round_check)
-        Toast.makeText(requireContext(),"Movie saved to your list.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Movie saved to your list.", Toast.LENGTH_SHORT).show()
     }
 
     private fun deleteMovieMyList(movie: Movie) = View.OnClickListener {
         viewModel.deleteMovieMyList(movie)
         imageSaveMovie.setImageResource(R.drawable.ic_round_add)
-        Toast.makeText(requireContext(),"Movie removed from your list.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Movie removed from your list.", Toast.LENGTH_SHORT).show()
     }
 }
