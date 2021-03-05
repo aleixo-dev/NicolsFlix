@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.data.repository
+package com.nicolas.nicolsflix.data.repository.database
 
 import com.nicolas.nicolsflix.data.model.Movie
 

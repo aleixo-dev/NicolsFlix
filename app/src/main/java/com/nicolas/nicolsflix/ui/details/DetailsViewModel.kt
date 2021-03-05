@@ -7,7 +7,7 @@ import com.nicolas.nicolsflix.data.model.Movie
 import com.nicolas.nicolsflix.data.network.RetrofitInitializer
 import com.nicolas.nicolsflix.data.network.api.popular.response.MoviePopularResponseBody
 import com.nicolas.nicolsflix.data.network.mapper.MovieMapper
-import com.nicolas.nicolsflix.data.repository.DatabaseDataSource
+import com.nicolas.nicolsflix.data.repository.database.DatabaseDataSource
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback

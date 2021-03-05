@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.data.db.NicolsDatabase
-import com.nicolas.nicolsflix.data.repository.DatabaseDataSource
+import com.nicolas.nicolsflix.data.repository.database.DatabaseDataSource
 import com.nicolas.nicolsflix.ui.mylist.adapter.MyListAdapter
 import kotlinx.android.synthetic.main.my_list_fragment.*
 

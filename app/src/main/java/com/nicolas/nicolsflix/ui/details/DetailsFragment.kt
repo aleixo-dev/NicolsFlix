@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.data.db.NicolsDatabase
 import com.nicolas.nicolsflix.data.model.Movie
-import com.nicolas.nicolsflix.data.repository.DatabaseDataSource
+import com.nicolas.nicolsflix.data.repository.database.DatabaseDataSource
 import com.nicolas.nicolsflix.ui.details.adapter.MovieSimilarAdapter
 import com.nicolas.nicolsflix.utils.FormatDate
 import com.squareup.picasso.Picasso
@@ -44,7 +44,7 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
 
         textNameMovie.text = detailsMovieArgs.title
         textValueRatingMovie.text = detailsMovieArgs.rating
-        textDateMovie.text = detailsMovieArgs.date.let { FormatDate.getDateMovie(it.toString()) }
+        textDateMovie.text = detailsMovieArgs.date?.let { FormatDate.getDateMovie(it) }
 
         textDescriptionMovie.text = detailsMovieArgs.description
         Picasso.get().load("https://image.tmdb.org/t/p/w500/${detailsMovieArgs.posterDetails}")

@@ -37,7 +37,7 @@ class TrendingAdapter(
 
         fun bind(movie: Movie) {
             Picasso.get()
-                .load("https://image.tmdb.org/t/p/w500/${movie.posterDetails}")
+                .load("https://image.tmdb.org/t/p/w500/${movie.poster}")
                 .into(imgHomeView)
             itemView.textViewHomeRating.text = movie.rating
             itemView.textViewNameHome.text = movie.title
