@@ -7,7 +7,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.data.model.Movie
-import com.nicolas.nicolsflix.data.model.MovieTrending
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.items_recycler_home.view.*
 
@@ -33,14 +32,13 @@ class TrendingAdapter(
         private val onMovieTrendingClickListener: ((movie: Movie) -> Unit)
     ) : RecyclerView.ViewHolder(itemView) {
 
-        private val imgHomeView: ImageView = itemView.imageViewHomeView
+        private val imgHomeView: ImageView = itemView.imageTrendingView
 
         fun bind(movie: Movie) {
             Picasso.get()
                 .load("https://image.tmdb.org/t/p/w500/${movie.poster}")
                 .into(imgHomeView)
             itemView.textViewHomeRating.text = movie.rating
-            itemView.textViewNameHome.text = movie.title
 
             itemView.setOnClickListener {
                 onMovieTrendingClickListener.invoke(movie)

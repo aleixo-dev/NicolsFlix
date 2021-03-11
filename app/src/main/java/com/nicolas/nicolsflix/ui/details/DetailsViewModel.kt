@@ -37,23 +37,5 @@ class DetailsViewModel(private val databaseDataSource: DatabaseDataSource) : Vie
     }
 
     fun getMovieSimilar(movieId: Int) {
-        RetrofitInitializer.movieSimilarService().getMovieSimiliar(movieId).enqueue(object :
-            Callback<MoviePopularResponseBody> {
-            override fun onResponse(
-                call: Call<MoviePopularResponseBody>,
-                response: Response<MoviePopularResponseBody>
-            ) {
-
-                if (response.isSuccessful && response.code() != 34) {
-                    listMovieSimilar.value = response.body()?.let {
-                        MovieMapper.responseToDomain(it.results)
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<MoviePopularResponseBody>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
     }
 }

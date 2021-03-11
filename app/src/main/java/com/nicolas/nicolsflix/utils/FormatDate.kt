@@ -8,11 +8,11 @@ class FormatDate {
 
     companion object {
         fun getDateMovie(dateMovie: String): String {
+            val locale = Locale("pt", "BR")
 
-            val formatDate = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+            val formatDate = SimpleDateFormat("dd-MM-yyyy", locale)
             val day = formatDate.parse(dateMovie)!!
-            return DateFormat.getDateInstance(DateFormat.LONG,Locale.ENGLISH).format(day)
-
+            return DateFormat.getDateInstance(DateFormat.LONG, locale).format(day)
         }
     }
 
