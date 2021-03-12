@@ -10,14 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitInitializer(private val retrofit: Retrofit) {
 
-    fun moviePopularService(): MoviePopularService =
-        retrofit.create(MoviePopularService::class.java)
-
     fun movieTrendingService(): MovieTrendingService =
         retrofit.create(MovieTrendingService::class.java)
-
-    fun movieRecommendService(): MovieRecommendService =
-        retrofit.create(MovieRecommendService::class.java)
 
     fun movieSimilarService(): MovieSimilarService =
         retrofit.create(MovieSimilarService::class.java)

@@ -6,7 +6,7 @@ import com.nicolas.nicolsflix.data.network.mapper.MovieMapper
 import com.nicolas.nicolsflix.data.network.mapper.MovieSearchMapper
 import retrofit2.awaitResponse
 
-class MovieRepositoryImpl(private val movieApi: RetrofitInitializer) : MovieApiRepository {
+class MovieApiRepositoryImpl(private val movieApi: RetrofitInitializer) : MovieApiRepository {
 
     override suspend fun getMovieTrending(): ArrayList<Movie>? {
 
@@ -19,16 +19,15 @@ class MovieRepositoryImpl(private val movieApi: RetrofitInitializer) : MovieApiR
         }
     }
 
-    override suspend fun getMoviePopular(): ArrayList<Movie> {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun getMovieRecommend(): ArrayList<Movie> {
-        TODO("Not yet implemented")
-    }
-
     override suspend fun getMovieSimilar(movieId: Int): ArrayList<Movie>? {
-        TODO("Not yet implemented")
+
+        val service = movieApi.movieSimilarService().getMovieSimiliar(movieId).awaitResponse()
+        val body = service.body()
+        return if (service.isSuccessful && body != null) {
+            MovieMapper.responseToDomain(body.results)
+        } else {
+            null
+        }
     }
 
     override suspend fun getMovieSearch(movieName: String?): ArrayList<Movie>? {
@@ -40,6 +39,5 @@ class MovieRepositoryImpl(private val movieApi: RetrofitInitializer) : MovieApiR
         } else {
             null
         }
-
     }
 }

@@ -4,31 +4,22 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
-import com.nicolas.nicolsflix.data.db.NicolsDatabase
 import com.nicolas.nicolsflix.data.model.Movie
-import com.nicolas.nicolsflix.data.repository.database.DatabaseDataSource
 import com.nicolas.nicolsflix.ui.details.adapter.MovieSimilarAdapter
 import com.nicolas.nicolsflix.utils.FormatDate
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.details_fragment.*
-
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailsFragment : Fragment(R.layout.details_fragment) {
 
     private val arguments: DetailsFragmentArgs by navArgs()
-
-    private val viewModel: DetailsViewModel by viewModels(
-        factoryProducer = {
-            val database = NicolsDatabase.getInstance(requireContext())
-            DetailsViewModelFactory(databaseDataSource = DatabaseDataSource(database.movieDao))
-        }
-    )
+    private val viewModel: DetailsViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

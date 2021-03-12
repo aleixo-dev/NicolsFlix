@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nicolas.nicolsflix.data.model.Movie
-import com.nicolas.nicolsflix.data.repository.api.MovieRepositoryImpl
+import com.nicolas.nicolsflix.data.repository.api.MovieApiRepositoryImpl
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val movieRepositoryImpl: MovieRepositoryImpl) : ViewModel() {
+class HomeViewModel(private val movieApiRepositoryImpl: MovieApiRepositoryImpl) : ViewModel() {
 
     val listMovieTrending = MutableLiveData<ArrayList<Movie>>()
     val listSearchMovie = MutableLiveData<ArrayList<Movie>>()
@@ -19,13 +19,13 @@ class HomeViewModel(private val movieRepositoryImpl: MovieRepositoryImpl) : View
 
     private fun callMovieTrending() {
         viewModelScope.launch {
-            listMovieTrending.value = movieRepositoryImpl.getMovieTrending()
+            listMovieTrending.value = movieApiRepositoryImpl.getMovieTrending()
         }
     }
 
     fun callSearchMovie(titleMovie: String) {
         viewModelScope.launch {
-            listSearchMovie.value = movieRepositoryImpl.getMovieSearch(titleMovie)
+            listSearchMovie.value = movieApiRepositoryImpl.getMovieSearch(titleMovie)
         }
     }
 

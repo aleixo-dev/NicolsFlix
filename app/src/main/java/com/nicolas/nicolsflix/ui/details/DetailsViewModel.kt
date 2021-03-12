@@ -4,38 +4,40 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nicolas.nicolsflix.data.model.Movie
-import com.nicolas.nicolsflix.data.network.RetrofitInitializer
-import com.nicolas.nicolsflix.data.network.api.popular.response.MoviePopularResponseBody
-import com.nicolas.nicolsflix.data.network.mapper.MovieMapper
-import com.nicolas.nicolsflix.data.repository.database.DatabaseDataSource
+import com.nicolas.nicolsflix.data.repository.api.MovieApiRepositoryImpl
+import com.nicolas.nicolsflix.data.repository.database.MovieDaoRepositoryImpl
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class DetailsViewModel(private val databaseDataSource: DatabaseDataSource) : ViewModel() {
+class DetailsViewModel(
+    private val movieDaoRepositoryImpl: MovieDaoRepositoryImpl,
+    private val movieApiRepositoryImpl: MovieApiRepositoryImpl
+) : ViewModel() {
 
     val isMovieMyList = MutableLiveData<Boolean>()
     val listMovieSimilar = MutableLiveData<List<Movie>>()
 
     fun insertMovieMyList(movie: Movie) {
         viewModelScope.launch {
-            databaseDataSource.insertMovie(movie)
+            movieDaoRepositoryImpl.insertMovie(movie)
         }
     }
 
     fun deleteMovieMyList(movie: Movie) {
         viewModelScope.launch {
-            databaseDataSource.deleteMovie(movie)
+            movieDaoRepositoryImpl.deleteMovie(movie)
         }
     }
 
     fun isMovieMyList(movie: Movie) {
         viewModelScope.launch {
-            isMovieMyList.value = databaseDataSource.getAllMovie().contains(movie)
+            isMovieMyList.value = movieDaoRepositoryImpl.getAllMovie().contains(movie)
         }
     }
 
     fun getMovieSimilar(movieId: Int) {
+
+        viewModelScope.launch {
+            listMovieSimilar.value = movieApiRepositoryImpl.getMovieSimilar(movieId)
+        }
     }
 }

@@ -8,7 +8,7 @@
 </p>
 
 ### 🚀 Projeto 
-<p>📝 NicolsFlix, aplicativo que exibe filmes populares,recomendados, tendências, filmes similares ao qual você selecionou, onde é possível salvar o filmes escolhido. Ao salvar o filme ele irá direto a sua lista de filmes. Api usada no projeto para exibição dos filmes foi a [TheMovieDb](https://www.themoviedb.org/)
+<p>📝 NicolsFlix, aplicativo que exibe filmes populares,recomendados, tendências, filmes similares ao qual você selecionou, onde é possível salvar o filme escolhido. Ao salvar o filme ele irá direto a sua lista de filmes. Api usada no projeto para exibição dos filmes foi a [TheMovieDb](https://www.themoviedb.org/)
 
 </p>
 

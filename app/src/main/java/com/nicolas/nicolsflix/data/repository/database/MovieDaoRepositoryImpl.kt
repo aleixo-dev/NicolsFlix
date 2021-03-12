@@ -5,7 +5,7 @@ import com.nicolas.nicolsflix.data.db.entity.toMovies
 import com.nicolas.nicolsflix.data.model.Movie
 import com.nicolas.nicolsflix.data.model.toEntity
 
-class DatabaseDataSource(private val movieDao: MovieDao) : MovieRepository {
+class MovieDaoRepositoryImpl(private val movieDao: MovieDao) : MovieRepository {
     override suspend fun insertMovie(movie: Movie) {
         movieDao.insert(toEntity(movie))
     }

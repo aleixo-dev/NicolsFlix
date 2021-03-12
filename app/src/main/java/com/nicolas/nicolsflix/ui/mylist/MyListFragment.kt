@@ -8,19 +8,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nicolas.nicolsflix.R
-import com.nicolas.nicolsflix.data.db.NicolsDatabase
-import com.nicolas.nicolsflix.data.repository.database.DatabaseDataSource
 import com.nicolas.nicolsflix.ui.mylist.adapter.MyListAdapter
 import kotlinx.android.synthetic.main.my_list_fragment.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MyListFragment : Fragment(R.layout.my_list_fragment) {
 
-    private val viewModel: MyListViewModel by viewModels(
-        factoryProducer = {
-            val databaseDetails = NicolsDatabase.getInstance(requireContext())
-            MyListViewModelFactory(databaseDataSource = DatabaseDataSource(databaseDetails.movieDao))
-        }
-    )
+    private val viewModel: MyListViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,7 +26,6 @@ class MyListFragment : Fragment(R.layout.my_list_fragment) {
     }
 
     private fun getMyListMovie() {
-        viewModel.getAllMyListMovie()
         viewModel.myListMovie.observe(viewLifecycleOwner) { myListMovies ->
             with(movieListRecyclerView) {
                 layoutManager = GridLayoutManager(context, 3)
