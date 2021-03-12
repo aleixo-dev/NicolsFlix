@@ -1,8 +1,13 @@
 package com.nicolas.nicolsflix.di
 
+import androidx.room.Room
+import com.nicolas.nicolsflix.data.db.NicolsDatabase
 import com.nicolas.nicolsflix.data.network.RetrofitInitializer
-import com.nicolas.nicolsflix.data.repository.api.MovieRepositoryImpl
+import com.nicolas.nicolsflix.data.repository.api.MovieApiRepositoryImpl
+import com.nicolas.nicolsflix.data.repository.database.MovieDaoRepositoryImpl
+import com.nicolas.nicolsflix.ui.details.DetailsViewModel
 import com.nicolas.nicolsflix.ui.home.HomeViewModel
+import com.nicolas.nicolsflix.ui.mylist.MyListViewModel
 import com.nicolas.nicolsflix.ui.search.SearchViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -18,12 +23,42 @@ val apiModules = module {
     single { RetrofitInitializer(retrofit = retrofit) }
 }
 
+val databaseModule = module {
+    single {
+        Room.databaseBuilder(
+            get(), NicolsDatabase::class.java,
+            "movies-nicols"
+        ).build()
+    }
+    single { get<NicolsDatabase>().movieDao }
+}
+
 val homeModules = module {
     viewModel {
         HomeViewModel(
-            MovieRepositoryImpl(
+            MovieApiRepositoryImpl(
                 movieApi = get()
             )
+        )
+    }
+}
+
+val myListModule = module {
+    viewModel {
+        MyListViewModel(
+            MovieDaoRepositoryImpl(
+                movieDao = get()
+            )
+        )
+    }
+}
+
+val detailsModule = module {
+    viewModel {
+        DetailsViewModel(
+            MovieDaoRepositoryImpl(
+                movieDao = get()
+            ), MovieApiRepositoryImpl(movieApi = get())
         )
     }
 }
@@ -31,7 +66,7 @@ val homeModules = module {
 val searchModules = module {
     viewModel {
         SearchViewModel(
-            MovieRepositoryImpl(
+            MovieApiRepositoryImpl(
                 movieApi = get()
             )
         )
