@@ -3,7 +3,9 @@
 <h2 align="center">NicolsFlix</h2>
 </p>
 
+<p>
 <img width=200 align=center scr="https://i.imgur.com/rgXUaZU.png"></img>
+</p>
 
 <p align=center>
 <img width=200 align=center src="https://i.imgur.com/Mb8Y6uD.png"></img>
