@@ -10,10 +10,10 @@ NicolsFlix, Aplicativo que exibe as tendências de filmes atuais e similares ,ao
 
 
 <p align=center>
-<img width=200 align=center src="https://i.imgur.com/Mb8Y6uD.png"></img>
-<img width=200 align=center src="https://i.imgur.com/h8gxVpy.png"></img>
-<img width=200 align=center src="https://i.imgur.com/Y2fctor.png"></img>
-<img width=200 align=center src="https://i.imgur.com/BFqBUI8.png"></img>
+<img width=200 align=center src="https://i.imgur.com/xMSowh9.jpeg"></img>
+<img width=200 align=center src="https://i.imgur.com/38ZcBjl.jpg"></img>
+<img width=200 align=center src="https://i.imgur.com/2hr5Wpu.jpg"></img>
+<img width=200 align=center src="https://i.imgur.com/vuuFzf1.jpg"></img>
 </p>
 
 
