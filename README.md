@@ -1,4 +1,12 @@
+
+<p align=center>
 <h2 align="center">NicolsFlix</h2>
+### 🚀 Projeto 
+<p>📝 NicolsFlix, aplicativo que exibe filmes populares,recomendados, tendências, filmes similares ao qual você selecionou, onde é possível salvar o filme escolhido. Ao salvar o filme ele irá direto a sua lista de filmes. Api usada no projeto para exibição dos filmes foi a [TheMovieDb](https://www.themoviedb.org/)
+
+</p>
+<img width=200 align=center src="https://i.imgur.com/PpTVKrm.png"></img>
+</p>
 
 <p align=center>
 <img width=200 align=center src="https://i.imgur.com/Mb8Y6uD.png"></img>
@@ -7,10 +15,6 @@
 <img width=200 align=center src="https://i.imgur.com/BFqBUI8.png"></img>
 </p>
 
-### 🚀 Projeto 
-<p>📝 NicolsFlix, aplicativo que exibe filmes populares,recomendados, tendências, filmes similares ao qual você selecionou, onde é possível salvar o filme escolhido. Ao salvar o filme ele irá direto a sua lista de filmes. Api usada no projeto para exibição dos filmes foi a [TheMovieDb](https://www.themoviedb.org/)
-
-</p>
 
 
 ### 🔧 Arquitetura
