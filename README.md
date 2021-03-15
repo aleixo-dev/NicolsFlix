@@ -1,7 +1,7 @@
 
 <p align=center>
 <h2 align="center">NicolsFlix</h2>
-<img width=200 align=center src="https://i.imgur.com/PpTVKrm.png"></img>
+<img width=300 align=center src="https://i.imgur.com/JNCNIYZ.png"></img>
 </p>
 
 <p align=center>
