@@ -11,7 +11,7 @@
 </p>
 
 ### 🚀 Projeto 
-<p>📝 NicolsFlix, aplicativo que exibe filmes populares,recomendados, tendências, filmes similares ao qual você selecionou, onde é possível salvar o filme escolhido. Ao salvar o filme ele irá direto a sua lista de filmes. Api usada no projeto para exibição dos filmes foi a [The Movie DB](https://www.themoviedb.org/)
+NicolsFlix, aplicativo que exibe filmes populares,recomendados, tendências, filmes similares ao qual você selecionou, onde é possível salvar o filme escolhido. Ao salvar o filme ele irá direto a sua lista de filmes. Api usada no projeto para exibição dos filmes foi a [The Movie DB](https://www.themoviedb.org/)
 
 ### 🔧 Arquitetura
 - > MVVM  Model - View - ViewModel
