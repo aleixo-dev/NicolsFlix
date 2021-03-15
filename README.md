@@ -20,7 +20,7 @@ NicolsFlix, Aplicativo que exibe as tendências de filmes atuais e similares ,ao
 ### 🔧 Arquitetura
 - > MVVM  Model - View - ViewModel
 	- Arquitetura recomendada pelo Google para construção de aplicativos
-	- <p align=center> <img width=350 align=center src="https://i.imgur.com/W8iEzjo.png"></img> </p>
+	- <p align=center> <img width=400 align=center src="https://i.imgur.com/W8iEzjo.png"></img> </p>
 
 ### 🔗 Recursos usados
 - **Retrofit2**
