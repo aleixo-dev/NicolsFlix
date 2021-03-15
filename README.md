@@ -30,8 +30,8 @@
 > LiveData, é uma classe armazenadora de dados observável. Diferente de um observável comum, o LiveData conta com reconhecimento de ciclo de vida, ou seja, ele respeita o ciclo de vida de outros componentes do app.
 - **Room**
 > Room, fornece uma longa camada de abstração sobre o SQLite para permitir o acesso fluente ao banco de dados enquanto aproveita todo o poder do SQLite.
-- **Coroutines** 
-> Coroutines, uma feature do kotlin que possibilita escrever códigos assíncronos mais facilmente e de maneira sequencial.
+- **Koin** 
+> Koin, Uma estrutura de injeção de dependência pragmática e leve para desenvolvedores Kotlin.
 - **SafeArgs**
 > SafeArgs, permite que você anexe dados a uma operação de navegação, definindo argumentos para um destino, ou seja, destino de perfil de usuário pode receber um argumento de ID de usuário para determinar qual exibir.
 
