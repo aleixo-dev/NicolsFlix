@@ -1,10 +1,11 @@
 
 <p align=center>
 <h2 align="center">NicolsFlix</h2>
+
+<img width=200 src="https://i.imgur.com/rgXUaZU.png"></img>
 </p>
 
-<img width=200 align=center src="https://i.imgur.com/rgXUaZU.png"></img>
-<
+
 
 <p align=center>
 <img width=200 align=center src="https://i.imgur.com/Mb8Y6uD.png"></img>
