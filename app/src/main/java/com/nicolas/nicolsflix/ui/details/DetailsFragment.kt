@@ -87,12 +87,12 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
     private fun addMovieMyList(movie: Movie) = View.OnClickListener {
         viewModel.insertMovieMyList(movie)
         imageSaveMovie.setImageResource(R.drawable.ic_round_check)
-        Toast.makeText(requireContext(), "Movie saved to your list.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Filme salvo na sua lista.", Toast.LENGTH_SHORT).show()
     }
 
     private fun deleteMovieMyList(movie: Movie) = View.OnClickListener {
         viewModel.deleteMovieMyList(movie)
         imageSaveMovie.setImageResource(R.drawable.ic_round_add)
-        Toast.makeText(requireContext(), "Movie removed from your list.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Filme removido da sua lista.", Toast.LENGTH_SHORT).show()
     }
 }

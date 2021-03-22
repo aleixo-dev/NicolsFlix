@@ -9,7 +9,7 @@ class MovieSearchMapper {
 
             val listMovieSearch = ArrayList<Movie>()
             for (movieSearchResponse in listResponseBody) {
-                if (movieSearchResponse.poster != null && movieSearchResponse.posterDetails != null) {
+                if (movieSearchResponse.poster != null && movieSearchResponse.posterDetails != null && movieSearchResponse.description != "" && movieSearchResponse.date != "") {
 
                     val movieSearch = Movie(
                         movieSearchResponse.id,
