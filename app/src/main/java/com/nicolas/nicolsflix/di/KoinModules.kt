@@ -5,6 +5,7 @@ import com.nicolas.nicolsflix.data.db.NicolsDatabase
 import com.nicolas.nicolsflix.data.network.RetrofitInitializer
 import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
 import com.nicolas.nicolsflix.repository.database.MovieDaoRepositoryImpl
+import com.nicolas.nicolsflix.utils.Constants
 import com.nicolas.nicolsflix.viewmodel.DetailsViewModel
 import com.nicolas.nicolsflix.viewmodel.HomeViewModel
 import com.nicolas.nicolsflix.viewmodel.MyListViewModel
@@ -16,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val apiModules = module {
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.themoviedb.org/3/")
+        .baseUrl(Constants.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
