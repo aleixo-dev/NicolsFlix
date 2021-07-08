@@ -2,9 +2,9 @@ package com.nicolas.nicolsflix.di
 
 import androidx.room.Room
 import com.nicolas.nicolsflix.data.db.NicolsDatabase
-import com.nicolas.nicolsflix.data.network.RetrofitInitializer
 import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
 import com.nicolas.nicolsflix.repository.database.MovieDaoRepositoryImpl
+import com.nicolas.nicolsflix.service.MovieService
 import com.nicolas.nicolsflix.utils.Constants
 import com.nicolas.nicolsflix.viewmodel.DetailsViewModel
 import com.nicolas.nicolsflix.viewmodel.HomeViewModel
@@ -16,12 +16,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 val apiModules = module {
-    val retrofit = Retrofit.Builder()
-        .baseUrl(Constants.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+    single { provideRetrofit() }
+    single { provideMovieService(get()) }
 
-    single { RetrofitInitializer(retrofit = retrofit) }
 }
 
 val databaseModule = module {
@@ -74,3 +71,12 @@ val searchModules = module {
         )
     }
 }
+
+private fun provideRetrofit(): Retrofit =
+    Retrofit.Builder()
+        .baseUrl(Constants.BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+private fun provideMovieService(retrofit: Retrofit): MovieService =
+    retrofit.create(MovieService::class.java)
