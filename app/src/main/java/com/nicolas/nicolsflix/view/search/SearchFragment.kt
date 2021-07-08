@@ -1,21 +1,17 @@
-package com.nicolas.nicolsflix.ui.search
+package com.nicolas.nicolsflix.view.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.GridLayout
-import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
-import com.nicolas.nicolsflix.ui.search.adapter.RecyclerSearchAdapter
+import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
 import com.nicolas.nicolsflix.utils.toLowerCase
+import com.nicolas.nicolsflix.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.search_fragment.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment(R.layout.search_fragment) {
 

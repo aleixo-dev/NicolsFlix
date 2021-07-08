@@ -1,9 +1,8 @@
-package com.nicolas.nicolsflix.ui.search.adapter
+package com.nicolas.nicolsflix.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.data.model.Movie

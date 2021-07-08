@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.ui.details
+package com.nicolas.nicolsflix.view.details
 
 import android.os.Bundle
 import android.view.View
@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.data.model.Movie
-import com.nicolas.nicolsflix.ui.details.adapter.MovieSimilarAdapter
+import com.nicolas.nicolsflix.adapters.MovieSimilarAdapter
 import com.nicolas.nicolsflix.utils.FormatDate
+import com.nicolas.nicolsflix.viewmodel.DetailsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.details_fragment.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsFragment : Fragment(R.layout.details_fragment) {
 

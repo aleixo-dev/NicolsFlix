@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.ui.home.adapter
+package com.nicolas.nicolsflix.adapters
 
 import android.view.LayoutInflater
 import android.view.View

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NicolsFlix">
         <activity android:name=".NicolsFlixActivity" />
-        <activity android:name=".ui.splash.SplashActivity">
+        <activity android:name="com.nicolas.nicolsflix.view.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

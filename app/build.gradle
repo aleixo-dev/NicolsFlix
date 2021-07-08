@@ -36,14 +36,12 @@ android {
 
 dependencies {
 
-    def nav_version = "2.3.3"
-    def room_version = "2.2.6"
-    def koin_version = "2.2.2"
+    def nav_version = "2.3.5"
+    def room_version = "2.3.0"
+    def koin_version = "3.1.2"
 
     //Koin.
-    implementation "org.koin:koin-android:$koin_version"
-    implementation "org.koin:koin-android-viewmodel:$koin_version"
-    implementation "org.koin:koin-android-scope:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
 
     // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"

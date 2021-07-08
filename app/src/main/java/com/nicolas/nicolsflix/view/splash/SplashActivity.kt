@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.ui.splash
+package com.nicolas.nicolsflix.view.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

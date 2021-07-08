@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical"
-    tools:context=".ui.search.SearchFragment" >
+    tools:context=".view.search.SearchFragment" >
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

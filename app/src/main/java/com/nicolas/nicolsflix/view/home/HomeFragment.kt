@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.ui.home
+package com.nicolas.nicolsflix.view.home
 
 import android.os.Bundle
 import android.view.View
@@ -9,12 +9,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
-import com.nicolas.nicolsflix.ui.home.adapter.TrendingAdapter
-import com.nicolas.nicolsflix.ui.search.adapter.RecyclerSearchAdapter
+import com.nicolas.nicolsflix.adapters.TrendingAdapter
+import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
 import com.nicolas.nicolsflix.utils.toLowerCase
+import com.nicolas.nicolsflix.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.home_fragment.*
-import kotlinx.android.synthetic.main.search_fragment.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
 

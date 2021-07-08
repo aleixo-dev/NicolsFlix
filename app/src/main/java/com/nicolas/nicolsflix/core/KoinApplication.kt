@@ -5,6 +5,7 @@ import com.nicolas.nicolsflix.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 
 class KoinApplication : Application() {
 
@@ -12,7 +13,7 @@ class KoinApplication : Application() {
         super.onCreate()
 
         startKoin {
-            androidLogger()
+            androidLogger(Level.ERROR)
             androidContext(this@KoinApplication)
 
             modules(

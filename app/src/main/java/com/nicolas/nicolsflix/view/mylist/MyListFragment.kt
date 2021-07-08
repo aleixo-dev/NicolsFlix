@@ -1,16 +1,16 @@
-package com.nicolas.nicolsflix.ui.mylist
+package com.nicolas.nicolsflix.view.mylist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nicolas.nicolsflix.R
-import com.nicolas.nicolsflix.ui.mylist.adapter.MyListAdapter
+import com.nicolas.nicolsflix.adapters.MyListAdapter
+import com.nicolas.nicolsflix.viewmodel.MyListViewModel
 import kotlinx.android.synthetic.main.my_list_fragment.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyListFragment : Fragment(R.layout.my_list_fragment) {
 
