@@ -20,4 +20,10 @@ class AppDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
+
+    /***
+     *  val dialog = AppDialogFragment()
+     *  dialog.show(parentFragmentManager, dialog.tag)
+     *  dialog.isCancelable = false
+     */
 }
