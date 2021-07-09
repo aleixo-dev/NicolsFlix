@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="toolbar_color">#000a12</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="orange">#FF6F00</color>
+    <color name="material_dark">#121212</color>
+    <color name="background_one">#F8F9FA</color>
 </resources>
