@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/home_navigation">
+
+    <fragment
+        android:id="@+id/home_navigation"
+        android:name="com.nicolas.nicolsflix.view.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/go_to_details_fragment"
+            app:destination="@id/navigation_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/list_navigation"
+        android:name="com.nicolas.nicolsflix.view.mylist.MyListFragment"
+        android:label="my_list_fragment"
+        tools:layout="@layout/my_list_fragment" >
+        <action
+            android:id="@+id/from_list_to_go_details_fragment"
+            app:destination="@id/navigation_details" />
+        <argument
+            android:name="Movie"
+            app:argType="com.nicolas.nicolsflix.data.model.Movie" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_details"
+        android:name="com.nicolas.nicolsflix.view.details.DetailsFragment"
+        android:label="details_fragment"
+        tools:layout="@layout/details_fragment" >
+        <argument
+            android:name="Movie"
+            app:argType="com.nicolas.nicolsflix.data.model.Movie" />
+    </fragment>
+</navigation>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="22dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="8dp">
+
+    <EditText
+        android:id="@+id/editSearchMovieHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:drawableEnd="@drawable/ic_search"
+        android:hint="@string/search"
+        android:inputType="textPersonName" />
+</androidx.cardview.widget.CardView>

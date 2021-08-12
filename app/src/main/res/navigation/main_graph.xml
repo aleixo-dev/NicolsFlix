@@ -2,32 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_graph"
-    app:startDestination="@id/homeFragment">
+    android:id="@+id/main_graph">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.nicolas.nicolsflix.view.home.HomeFragment"
-        android:label="home_fragment"
-        tools:layout="@layout/home_fragment" >
-        <action
-            android:id="@+id/action_homeFragment_to_myListFragment"
-            app:destination="@id/myListFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-    </fragment>
     <fragment
         android:id="@+id/myListFragment"
         android:name="com.nicolas.nicolsflix.view.mylist.MyListFragment"
         android:label="my_list_fragment"
         tools:layout="@layout/my_list_fragment" >
-        <action
-            android:id="@+id/action_myListFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
         <argument
             android:name="movie"
             app:argType="com.nicolas.nicolsflix.data.model.Movie" />
@@ -51,9 +32,5 @@
         android:id="@+id/searchFragment"
         android:name="com.nicolas.nicolsflix.view.search.SearchFragment"
         android:label="search_fragment"
-        tools:layout="@layout/search_fragment" >
-        <action
-            android:id="@+id/action_searchFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-    </fragment>
+        tools:layout="@layout/search_fragment" />
 </navigation>

@@ -31,7 +31,7 @@ class MyListFragment : Fragment(R.layout.my_list_fragment) {
                 layoutManager = GridLayoutManager(context, 3)
                 setHasFixedSize(true)
                 adapter = MyListAdapter(myListMovies){
-                    val directions = MyListFragmentDirections.actionMyListFragmentToDetailsFragment(it)
+                    val directions = MyListFragmentDirections.fromListToGoDetailsFragment(it)
                     findNavController().navigate(directions)
                 }
             }

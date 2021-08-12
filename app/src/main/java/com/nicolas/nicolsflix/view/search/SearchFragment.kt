@@ -30,9 +30,12 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
             if (listSearch != null) {
                 recyclerSearchMovie.layoutManager = GridLayoutManager(context,3)
                 adapter = RecyclerSearchAdapter(listSearch) {
+                    /*
                     val directions =
                         SearchFragmentDirections.actionSearchFragmentToDetailsFragment(it)
                     findNavController().navigate(directions)
+
+                     */
                 }
                 recyclerSearchMovie.adapter = adapter
                 showSearch()

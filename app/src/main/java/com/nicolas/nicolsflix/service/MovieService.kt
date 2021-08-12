@@ -1,5 +1,6 @@
 package com.nicolas.nicolsflix.service
 
+import com.nicolas.nicolsflix.data.model.GenreResponse
 import com.nicolas.nicolsflix.data.model.MovieResponse
 import com.nicolas.nicolsflix.data.network.api.search.response.MovieSearchResult
 import com.nicolas.nicolsflix.utils.Constants
@@ -15,6 +16,10 @@ interface MovieService {
         @Query("api_key") apiKey: String = Constants.API_KEY
     ): Response<MovieResponse>
 
+    @GET(Constants.ENDPOINT_GENRE)
+    suspend fun getGenreMovie(
+        @Query("api_key") apiKey: String = Constants.API_KEY
+    ): Response<GenreResponse>
 
     @GET(Constants.ENDPOINT_RECOMMEND)
     suspend fun getRecommendMovie(

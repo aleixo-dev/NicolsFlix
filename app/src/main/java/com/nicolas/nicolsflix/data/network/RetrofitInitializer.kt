@@ -1,5 +1,6 @@
 package com.nicolas.nicolsflix.data.network
 
+import com.nicolas.nicolsflix.data.network.api.popular.MoviePopularService
 import com.nicolas.nicolsflix.data.network.api.search.MovieSearchService
 import com.nicolas.nicolsflix.data.network.api.similiar.MovieSimilarService
 import com.nicolas.nicolsflix.data.network.api.trending.MovieTrendingService
@@ -14,4 +15,6 @@ class RetrofitInitializer(private val retrofit: Retrofit) {
         retrofit.create(MovieSimilarService::class.java)
 
     fun movieSearchService(): MovieSearchService = retrofit.create(MovieSearchService::class.java)
+
+    fun getPopularMovie(): MoviePopularService = retrofit.create(MoviePopularService::class.java)
 }
