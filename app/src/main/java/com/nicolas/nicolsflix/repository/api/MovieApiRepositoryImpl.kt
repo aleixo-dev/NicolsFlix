@@ -1,12 +1,15 @@
 package com.nicolas.nicolsflix.repository.api
 
 import com.nicolas.nicolsflix.data.model.Movie
+import com.nicolas.nicolsflix.data.model.MovieResponse
 import com.nicolas.nicolsflix.data.network.RetrofitInitializer
 import com.nicolas.nicolsflix.data.network.mapper.MovieMapper
 import com.nicolas.nicolsflix.data.network.mapper.MovieSearchMapper
 import retrofit2.awaitResponse
 
-class MovieApiRepositoryImpl(private val movieApi: RetrofitInitializer) : MovieApiRepository {
+class MovieApiRepositoryImpl(
+    private val movieApi: RetrofitInitializer,
+) : MovieApiRepository {
 
     override suspend fun getMovieTrending(): ArrayList<Movie>? {
 
@@ -36,6 +39,17 @@ class MovieApiRepositoryImpl(private val movieApi: RetrofitInitializer) : MovieA
         val body = service.body()
         return if (service.isSuccessful && body != null) {
             MovieSearchMapper.responseToDomain(body.results)
+        } else {
+            null
+        }
+    }
+
+    override suspend fun getPopularMovie(): ArrayList<Movie>? {
+        // TODO: refatorar!
+        val service = movieApi.getPopularMovie().getMoviePopular().awaitResponse()
+        val body = service.body()
+        return if (service.isSuccessful && body != null) {
+            MovieMapper.responseToDomain(body.results)
         } else {
             null
         }
