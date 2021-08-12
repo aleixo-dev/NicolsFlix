@@ -1,84 +1,114 @@
 package com.nicolas.nicolsflix.view.home
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
-import com.nicolas.nicolsflix.adapters.TrendingAdapter
 import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
+import com.nicolas.nicolsflix.adapters.TrendingAdapter
+import com.nicolas.nicolsflix.databinding.HomeFragmentBinding
+import com.nicolas.nicolsflix.utils.showToast
 import com.nicolas.nicolsflix.utils.toLowerCase
 import com.nicolas.nicolsflix.viewmodel.HomeViewModel
-import kotlinx.android.synthetic.main.home_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private val viewModel: HomeViewModel by viewModel()
-    private lateinit var adapter: RecyclerSearchAdapter
+
+    private var _binding: HomeFragmentBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = HomeFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        initMyButtonList()
-        initRecyclerViewSearchMovie()
-        initRecyclerViewTrendingMovie()
-
-        editSearchMovie.addTextChangedListener { searchMovie ->
-            viewModel.callSearchMovie(toLowerCase(searchMovie.toString()))
-        }
-        movieTrendingRecyclerView.visibility = View.VISIBLE
-
+        setRecyclerViewSearch()
+        setRecyclerViewMovieTrending()
+        setRecyclerViewMoviePopular()
+        observeTextSearchListener()
     }
 
-    private fun initRecyclerViewSearchMovie(){
-
-        viewModel.listSearchMovie.observe(viewLifecycleOwner) { listSearch ->
-
-            movieTrendingRecyclerView.visibility = View.VISIBLE
-
-            if (listSearch != null) {
-
-                movieTrendingRecyclerView.visibility = View.GONE
-                recyclerViewSearch.visibility = View.VISIBLE
-                recyclerViewSearch.layoutManager =
-                    LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-                adapter = RecyclerSearchAdapter(listSearch) {
-
-                    val directions = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(it)
-                    findNavController().navigate(directions)
-                }
-                recyclerViewSearch.adapter = adapter
-            } else {
-                recyclerViewSearch.visibility = View.GONE
-            }
-        }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
-    private fun initRecyclerViewTrendingMovie() {
-
-        viewModel.listMovieTrending.observe(viewLifecycleOwner) { listMovieTrending ->
-            with(movieTrendingRecyclerView) {
-                layoutManager =
-                    LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+    private fun setRecyclerViewSearch() {
+        binding.movieSearchRecyclerView.run {
+            viewModel.listNamesMovie.observe(viewLifecycleOwner, {
                 setHasFixedSize(true)
-                adapter = TrendingAdapter(listMovieTrending) { clickMovie ->
-                    val directions =
-                        HomeFragmentDirections.actionHomeFragmentToDetailsFragment(clickMovie)
-                    findNavController().navigate(directions)
+                if (it.isEmpty()) {
+                    binding.tvMovieNotFound.visibility = View.VISIBLE
+                    binding.movieSearchRecyclerView.visibility = View.GONE
+                } else {
+                    binding.tvMovieNotFound.visibility = View.GONE
+                    adapter = RecyclerSearchAdapter(it) { onClickMovie ->
+                        val directions = HomeFragmentDirections.goToDetailsFragment(onClickMovie)
+                        findNavController().navigate(directions)
+                    }
                 }
-            }
+            })
         }
     }
 
+    private fun setRecyclerViewMovieTrending() {
+        binding.movieTrendingRecyclerView.run {
+            viewModel.listTrendingMovie.observe(viewLifecycleOwner, {
+                setHasFixedSize(true)
+                adapter = TrendingAdapter(it) { onClickMovie ->
+                    val directions = HomeFragmentDirections.goToDetailsFragment(onClickMovie)
+                    findNavController().navigate(directions)
+                }
+            })
+        }
+    }
 
-    private fun initMyButtonList() {
-        buttonMyList.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_myListFragment)
+    private fun setRecyclerViewMoviePopular() {
+        binding.moviePopularRecyclerView.run {
+            viewModel.fetchPopularMovie()
+            viewModel.listPopularMovie.observe(viewLifecycleOwner, {
+                setHasFixedSize(true)
+                adapter = TrendingAdapter(it) { onClickMovie ->
+                    val directions = HomeFragmentDirections.goToDetailsFragment(onClickMovie)
+                    findNavController().navigate(directions)
+                }
+            })
+        }
+    }
+
+    private fun observeTextSearchListener() {
+        binding.include.editSearchMovieHome.addTextChangedListener { movieName ->
+            if (movieName.isNullOrEmpty()) {
+                binding.run {
+                    moviePopularRecyclerView.visibility = View.VISIBLE
+                    movieTrendingRecyclerView.visibility = View.VISIBLE
+                    movieSearchRecyclerView.visibility = View.GONE
+                    tvTrendingName.visibility = View.VISIBLE
+                    tvPopularName.visibility = View.VISIBLE
+                }
+
+            } else {
+                viewModel.fetchNameMovie(toLowerCase(movieName.toString()))
+                binding.run {
+                    moviePopularRecyclerView.visibility = View.GONE
+                    movieTrendingRecyclerView.visibility = View.GONE
+                    movieSearchRecyclerView.visibility = View.VISIBLE
+                    tvTrendingName.visibility = View.GONE
+                    tvPopularName.visibility = View.GONE
+                }
+            }
         }
     }
 }
