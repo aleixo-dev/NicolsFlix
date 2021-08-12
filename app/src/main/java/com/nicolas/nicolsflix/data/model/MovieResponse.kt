@@ -1,6 +1,7 @@
 package com.nicolas.nicolsflix.data.model
 
 import com.google.gson.annotations.SerializedName
+import com.nicolas.nicolsflix.data.db.entity.MovieEntity
 
 data class MovieResponse(
     @SerializedName("id") val id: Int,
@@ -12,3 +13,15 @@ data class MovieResponse(
     @SerializedName("release_date") val date: String
 
 )
+
+fun MovieResponse.toEntity(): MovieEntity {
+    return MovieEntity(
+        id = this.id,
+        title = this.title,
+        poster = this.poster,
+        posterDetails = this.posterDetails,
+        description = this.description,
+        rating = this.rating.toString(),
+        date = this.date
+    )
+}
