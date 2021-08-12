@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.nicolas.nicolsflix.NicolsFlixActivity
+import com.nicolas.nicolsflix.MainActivity
 import com.nicolas.nicolsflix.R
 
 class SplashActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed(
             {
-                startActivity(Intent(this, NicolsFlixActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
             },SPLASH_TIME_OUT)
     }
