@@ -34,8 +34,8 @@ class RecyclerSearchAdapter(
     ) :
         RecyclerView.ViewHolder(itemView) {
 
+        /*
         init {
-
             if (listMovieSearch != null) {
                 itemView.setOnClickListener {
                     val p = adapterPosition
@@ -45,6 +45,8 @@ class RecyclerSearchAdapter(
                 }
             }
         }
+
+         */
 
         fun bind(searchMovie: Movie) {
             val imagePoster = itemView.imageSearch
