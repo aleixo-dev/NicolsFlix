@@ -11,4 +11,6 @@ object Constants {
     const val ENDPOINT_SIMILAR = "movie/{movie_id}/similar"
     const val LANGUAGE_BR = "pt-BR"
     const val LANGUAGE_US = "en-US"
+    const val ID_CHANNEL = ""
+    const val NOTIFICATION_HELLO_WORLD = "notification_hello_world"
 }

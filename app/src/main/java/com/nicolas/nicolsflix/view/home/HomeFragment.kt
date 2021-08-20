@@ -11,7 +11,6 @@ import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
 import com.nicolas.nicolsflix.adapters.TrendingAdapter
 import com.nicolas.nicolsflix.databinding.HomeFragmentBinding
-import com.nicolas.nicolsflix.utils.showToast
 import com.nicolas.nicolsflix.utils.toLowerCase
 import com.nicolas.nicolsflix.viewmodel.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,6 +37,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         setRecyclerViewMovieTrending()
         setRecyclerViewMoviePopular()
         observeTextSearchListener()
+
     }
 
     override fun onDestroy() {
