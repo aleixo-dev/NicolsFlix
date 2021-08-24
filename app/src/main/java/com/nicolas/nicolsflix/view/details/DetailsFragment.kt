@@ -20,11 +20,16 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class DetailsFragment : Fragment(R.layout.details_fragment) {
 
     private val arguments: DetailsFragmentArgs by navArgs()
+    private val argumentUpcoming: DetailsFragmentArgs by navArgs()
+
     private val viewModel: DetailsViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initComponentsDetails()
+
+        if(arguments == null){
+        }
     }
 
     private fun initComponentsDetails() {

@@ -11,4 +11,9 @@
         android:icon="@drawable/ic_list"
         android:title="@string/title_list" />
 
+    <item
+        android:title="Upcoming"
+        android:id="@+id/upcomingFragment"
+        android:icon="@drawable/ic_fire"/>
+
 </menu>

@@ -10,5 +10,6 @@ object Constants {
     const val ENDPOINT_POPULAR = "movie/popular"
     const val ENDPOINT_SIMILAR = "movie/{movie_id}/similar"
     const val LANGUAGE_BR = "pt-BR"
+    const val BASE_URL = "https://api.themoviedb.org/3/"
     const val LANGUAGE_US = "en-US"
 }
