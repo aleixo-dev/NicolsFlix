@@ -1,16 +1,37 @@
-package com.nicolas.nicolsflix.viewmodel
+package com.nicolas.nicolsflix.home.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nicolas.nicolsflix.data.model.Movie
+import com.nicolas.nicolsflix.home.domain.domain.MovieUiDomain
+import com.nicolas.nicolsflix.home.domain.usecase.GetMoviePopularUseCase
+import com.nicolas.nicolsflix.home.utils.DataState
 import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class HomeViewModel(
-    private val movieApiRepositoryImpl: MovieApiRepositoryImpl
+    private val movieApiRepositoryImpl: MovieApiRepositoryImpl,
+    private val getMoviePopularUseCase: GetMoviePopularUseCase
 ) : ViewModel() {
+
+    private val _moviePopularList = MutableLiveData<DataState<List<MovieUiDomain>>>()
+    val moviePopularList: LiveData<DataState<List<MovieUiDomain>>> = _moviePopularList.apply {
+        value = DataState.Loading
+    }
+
+    fun getMoviePopular() {
+        viewModelScope.launch {
+            try {
+                val result = getMoviePopularUseCase.execute()
+                _moviePopularList.postValue(result)
+            } catch (exception: Exception) {
+                _moviePopularList.postValue(DataState.Error())
+            }
+        }
+    }
 
     private val _listTrendingMovie = MutableLiveData<ArrayList<Movie>>()
     val listTrendingMovie: LiveData<ArrayList<Movie>> = _listTrendingMovie
