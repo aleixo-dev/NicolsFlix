@@ -7,7 +7,7 @@ import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
 import com.nicolas.nicolsflix.repository.database.MovieDaoRepositoryImpl
 import com.nicolas.nicolsflix.service.MovieService
 import com.nicolas.nicolsflix.viewmodel.DetailsViewModel
-import com.nicolas.nicolsflix.viewmodel.HomeViewModel
+import com.nicolas.nicolsflix.home.presentation.HomeViewModel
 import com.nicolas.nicolsflix.viewmodel.MyListViewModel
 import com.nicolas.nicolsflix.viewmodel.SearchViewModel
 import okhttp3.OkHttpClient
@@ -40,6 +40,7 @@ val databaseModule = module {
     single { get<NicolsDatabase>().movieDao }
 }
 
+/*
 val homeModules = module {
     viewModel {
         HomeViewModel(
@@ -49,6 +50,8 @@ val homeModules = module {
         )
     }
 }
+
+ */
 
 val myListModule = module {
 

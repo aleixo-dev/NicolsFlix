@@ -2,6 +2,7 @@ package com.nicolas.nicolsflix.core
 
 import android.app.Application
 import com.nicolas.nicolsflix.di.*
+import com.nicolas.nicolsflix.home.HomeDiModule
 import com.nicolas.nicolsflix.upcoming.UpcomingDiModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -19,12 +20,12 @@ class KoinApplication : Application() {
 
             modules(
                 apiModules,
-                homeModules,
                 detailsModule,
                 searchModules,
                 databaseModule,
                 myListModule,
-                UpcomingDiModule.instance
+                UpcomingDiModule.instance,
+                HomeDiModule.instance
             )
         }
     }

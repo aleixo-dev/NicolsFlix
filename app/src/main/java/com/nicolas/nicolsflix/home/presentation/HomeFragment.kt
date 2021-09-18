@@ -1,6 +1,7 @@
-package com.nicolas.nicolsflix.view.home
+package com.nicolas.nicolsflix.home.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +12,9 @@ import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
 import com.nicolas.nicolsflix.adapters.TrendingAdapter
 import com.nicolas.nicolsflix.databinding.HomeFragmentBinding
+import com.nicolas.nicolsflix.home.utils.DataState
 import com.nicolas.nicolsflix.utils.showToast
 import com.nicolas.nicolsflix.utils.toLowerCase
-import com.nicolas.nicolsflix.viewmodel.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
@@ -34,15 +35,53 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setRecyclerViewSearch()
         setRecyclerViewMovieTrending()
         setRecyclerViewMoviePopular()
         observeTextSearchListener()
+        getMoviePopular()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun setRecyclerViewMoviePopular() {
+        binding.moviePopularRecyclerView.run {
+            viewModel.fetchPopularMovie()
+            viewModel.listPopularMovie.observe(viewLifecycleOwner, {
+                setHasFixedSize(true)
+                adapter = TrendingAdapter(it) { onClickMovie ->
+                    val directions =
+                        HomeFragmentDirections.goToDetailsFragment(onClickMovie)
+                    findNavController().navigate(directions)
+                }
+            })
+        }
+    }
+
+    private fun getMoviePopular() {
+        viewModel.run {
+            getMoviePopular()
+            moviePopularList.observe(viewLifecycleOwner) { movie ->
+                when (movie) {
+                    is DataState.Loading -> {
+                        // TODO
+                    }
+                    is DataState.Success -> {
+                        showToast(movie.result[0].title)
+                    }
+                    is DataState.Error -> {
+                        // TODO
+                    }
+                    is DataState.Empty -> {
+                        // TODO
+                    }
+                }
+            }
+        }
     }
 
     private fun setRecyclerViewSearch() {
@@ -55,7 +94,8 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 } else {
                     binding.tvMovieNotFound.visibility = View.GONE
                     adapter = RecyclerSearchAdapter(it) { onClickMovie ->
-                        val directions = HomeFragmentDirections.goToDetailsFragment(onClickMovie)
+                        val directions =
+                            HomeFragmentDirections.goToDetailsFragment(onClickMovie)
                         findNavController().navigate(directions)
                     }
                 }
@@ -68,20 +108,10 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
             viewModel.listTrendingMovie.observe(viewLifecycleOwner, {
                 setHasFixedSize(true)
                 adapter = TrendingAdapter(it) { onClickMovie ->
-                    val directions = HomeFragmentDirections.goToDetailsFragment(onClickMovie)
-                    findNavController().navigate(directions)
-                }
-            })
-        }
-    }
-
-    private fun setRecyclerViewMoviePopular() {
-        binding.moviePopularRecyclerView.run {
-            viewModel.fetchPopularMovie()
-            viewModel.listPopularMovie.observe(viewLifecycleOwner, {
-                setHasFixedSize(true)
-                adapter = TrendingAdapter(it) { onClickMovie ->
-                    val directions = HomeFragmentDirections.goToDetailsFragment(onClickMovie)
+                    val directions =
+                        HomeFragmentDirections.goToDetailsFragment(
+                            onClickMovie
+                        )
                     findNavController().navigate(directions)
                 }
             })
