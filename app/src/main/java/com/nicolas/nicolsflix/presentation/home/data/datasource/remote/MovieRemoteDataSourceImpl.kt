@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.home.data.datasource.remote
+package com.nicolas.nicolsflix.presentation.home.data.datasource.remote
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

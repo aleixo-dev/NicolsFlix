@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.home.presentation
+package com.nicolas.nicolsflix.presentation.home.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
 import com.nicolas.nicolsflix.adapters.TrendingAdapter
 import com.nicolas.nicolsflix.databinding.HomeFragmentBinding
-import com.nicolas.nicolsflix.home.utils.DataState
+import com.nicolas.nicolsflix.presentation.home.utils.DataState
 import com.nicolas.nicolsflix.common.showToast
 import com.nicolas.nicolsflix.common.toLowerCase
 import org.koin.androidx.viewmodel.ext.android.viewModel

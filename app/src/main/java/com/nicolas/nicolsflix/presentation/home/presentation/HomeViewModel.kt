@@ -1,13 +1,13 @@
-package com.nicolas.nicolsflix.home.presentation
+package com.nicolas.nicolsflix.presentation.home.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nicolas.nicolsflix.data.model.Movie
-import com.nicolas.nicolsflix.home.domain.domain.MovieUiDomain
-import com.nicolas.nicolsflix.home.domain.usecase.GetMoviePopularUseCase
-import com.nicolas.nicolsflix.home.utils.DataState
+import com.nicolas.nicolsflix.presentation.home.domain.domain.MovieUiDomain
+import com.nicolas.nicolsflix.presentation.home.domain.usecase.GetMoviePopularUseCase
+import com.nicolas.nicolsflix.presentation.home.utils.DataState
 import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
 import kotlinx.coroutines.launch
 import java.lang.Exception

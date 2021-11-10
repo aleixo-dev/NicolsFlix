@@ -1,8 +1,8 @@
-package com.nicolas.nicolsflix.home.data.mapper
+package com.nicolas.nicolsflix.presentation.home.data.mapper
 
-import com.nicolas.nicolsflix.home.data.model.ResponseMovie
-import com.nicolas.nicolsflix.home.data.model.ResponseResultMovie
-import com.nicolas.nicolsflix.home.domain.domain.MovieUiDomain
+import com.nicolas.nicolsflix.presentation.home.data.model.ResponseMovie
+import com.nicolas.nicolsflix.presentation.home.data.model.ResponseResultMovie
+import com.nicolas.nicolsflix.presentation.home.domain.domain.MovieUiDomain
 
 fun ResponseMovie.toDomainUiModel(movieList: List<ResponseResultMovie>): List<MovieUiDomain> {
 

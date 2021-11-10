@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.home.data.model
+package com.nicolas.nicolsflix.presentation.home.data.model
 
 import com.google.gson.annotations.SerializedName
 

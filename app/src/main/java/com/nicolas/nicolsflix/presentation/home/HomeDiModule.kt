@@ -1,12 +1,12 @@
-package com.nicolas.nicolsflix.home
+package com.nicolas.nicolsflix.presentation.home
 
-import com.nicolas.nicolsflix.home.data.datasource.remote.MovieApi
-import com.nicolas.nicolsflix.home.data.datasource.remote.MovieRemoteDataSource
-import com.nicolas.nicolsflix.home.data.datasource.remote.MovieRemoteDataSourceImpl
-import com.nicolas.nicolsflix.home.data.repository.MovieRepository
-import com.nicolas.nicolsflix.home.data.repository.MovieRepositoryImpl
-import com.nicolas.nicolsflix.home.domain.usecase.GetMoviePopularUseCase
-import com.nicolas.nicolsflix.home.presentation.HomeViewModel
+import com.nicolas.nicolsflix.presentation.home.data.datasource.remote.MovieApi
+import com.nicolas.nicolsflix.presentation.home.data.datasource.remote.MovieRemoteDataSource
+import com.nicolas.nicolsflix.presentation.home.data.datasource.remote.MovieRemoteDataSourceImpl
+import com.nicolas.nicolsflix.presentation.home.data.repository.MovieRepository
+import com.nicolas.nicolsflix.presentation.home.data.repository.MovieRepositoryImpl
+import com.nicolas.nicolsflix.presentation.home.domain.usecase.GetMoviePopularUseCase
+import com.nicolas.nicolsflix.presentation.home.presentation.HomeViewModel
 import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
 import com.nicolas.nicolsflix.common.Constants
 import okhttp3.OkHttpClient

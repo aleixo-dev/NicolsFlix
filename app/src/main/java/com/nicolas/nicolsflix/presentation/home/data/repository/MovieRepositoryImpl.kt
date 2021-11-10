@@ -1,9 +1,8 @@
-package com.nicolas.nicolsflix.home.data.repository
+package com.nicolas.nicolsflix.presentation.home.data.repository
 
-import com.nicolas.nicolsflix.home.data.datasource.remote.MovieRemoteDataSource
-import com.nicolas.nicolsflix.home.data.mapper.toDomainUiModel
-import com.nicolas.nicolsflix.home.domain.domain.MovieUiDomain
-import java.lang.Exception
+import com.nicolas.nicolsflix.presentation.home.data.datasource.remote.MovieRemoteDataSource
+import com.nicolas.nicolsflix.presentation.home.data.mapper.toDomainUiModel
+import com.nicolas.nicolsflix.presentation.home.domain.domain.MovieUiDomain
 
 class MovieRepositoryImpl(
     private val remoteDataSource: MovieRemoteDataSource

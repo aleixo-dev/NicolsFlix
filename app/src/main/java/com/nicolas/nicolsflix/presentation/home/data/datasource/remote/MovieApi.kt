@@ -1,6 +1,6 @@
-package com.nicolas.nicolsflix.home.data.datasource.remote
+package com.nicolas.nicolsflix.presentation.home.data.datasource.remote
 
-import com.nicolas.nicolsflix.home.data.model.ResponseMovie
+import com.nicolas.nicolsflix.presentation.home.data.model.ResponseMovie
 import com.nicolas.nicolsflix.common.Constants
 import retrofit2.http.GET
 import retrofit2.http.Query

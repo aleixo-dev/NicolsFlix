@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.home.utils
+package com.nicolas.nicolsflix.presentation.home.utils
 
 sealed class DataState<out T> {
     class Success<out T>(val result: T) : DataState<T>()

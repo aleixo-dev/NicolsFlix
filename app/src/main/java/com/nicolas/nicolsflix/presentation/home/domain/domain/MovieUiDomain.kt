@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.home.domain.domain
+package com.nicolas.nicolsflix.presentation.home.domain.domain
 
 import java.io.Serializable
 

@@ -2,7 +2,7 @@ package com.nicolas.nicolsflix.core
 
 import android.app.Application
 import com.nicolas.nicolsflix.di.*
-import com.nicolas.nicolsflix.home.HomeDiModule
+import com.nicolas.nicolsflix.presentation.home.HomeDiModule
 import com.nicolas.nicolsflix.presentation.upcoming.UpcomingDiModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
