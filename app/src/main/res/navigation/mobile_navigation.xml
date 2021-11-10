@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/upcomingFragment"
-        android:name="com.nicolas.nicolsflix.upcoming.presentation.UpcomingFragment"
+        android:name="com.nicolas.nicolsflix.presentation.upcoming.presentation.UpcomingFragment"
         android:label="upcoming_fragment"
         tools:layout="@layout/upcoming_fragment" >
         <action

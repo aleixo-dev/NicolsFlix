@@ -4,11 +4,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.widget.addTextChangedListener
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
-import com.nicolas.nicolsflix.utils.toLowerCase
+import com.nicolas.nicolsflix.common.toLowerCase
 import com.nicolas.nicolsflix.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.search_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -8,7 +8,7 @@ import com.nicolas.nicolsflix.home.data.repository.MovieRepositoryImpl
 import com.nicolas.nicolsflix.home.domain.usecase.GetMoviePopularUseCase
 import com.nicolas.nicolsflix.home.presentation.HomeViewModel
 import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
-import com.nicolas.nicolsflix.utils.Constants
+import com.nicolas.nicolsflix.common.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
