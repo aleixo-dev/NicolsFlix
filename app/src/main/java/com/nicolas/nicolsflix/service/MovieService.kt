@@ -3,7 +3,7 @@ package com.nicolas.nicolsflix.service
 import com.nicolas.nicolsflix.data.model.GenreResponse
 import com.nicolas.nicolsflix.data.model.MovieResponse
 import com.nicolas.nicolsflix.data.network.api.search.response.MovieSearchResult
-import com.nicolas.nicolsflix.utils.Constants
+import com.nicolas.nicolsflix.common.Constants
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
