@@ -1,9 +1,9 @@
-package com.nicolas.nicolsflix.presentation.upcoming.domain.usecase
+package com.nicolas.nicolsflix.upcoming.domain.usecase
 
-import com.nicolas.nicolsflix.presentation.upcoming.data.repository.UpcomingRepository
-import com.nicolas.nicolsflix.presentation.upcoming.domain.model.UpcomingUiDomain
-import com.nicolas.nicolsflix.presentation.upcoming.utils.DataState
-import com.nicolas.nicolsflix.presentation.upcoming.utils.UseCase
+import com.nicolas.nicolsflix.upcoming.data.repository.UpcomingRepository
+import com.nicolas.nicolsflix.upcoming.domain.model.UpcomingUiDomain
+import com.nicolas.nicolsflix.upcoming.utils.DataState
+import com.nicolas.nicolsflix.upcoming.utils.UseCase
 
 class GetMovieUpcomingUseCase(
     private val repository: UpcomingRepository

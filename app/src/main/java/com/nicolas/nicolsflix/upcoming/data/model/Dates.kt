@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.presentation.upcoming.data.model
+package com.nicolas.nicolsflix.upcoming.data.model
 
 
 import com.google.gson.annotations.SerializedName

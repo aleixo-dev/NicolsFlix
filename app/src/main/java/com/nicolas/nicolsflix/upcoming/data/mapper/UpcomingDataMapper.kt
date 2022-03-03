@@ -1,8 +1,8 @@
-package com.nicolas.nicolsflix.presentation.upcoming.data.mapper
+package com.nicolas.nicolsflix.upcoming.data.mapper
 
-import com.nicolas.nicolsflix.presentation.upcoming.data.model.Result
-import com.nicolas.nicolsflix.presentation.upcoming.data.model.UpcomingResponse
-import com.nicolas.nicolsflix.presentation.upcoming.domain.model.UpcomingUiDomain
+import com.nicolas.nicolsflix.upcoming.data.model.Result
+import com.nicolas.nicolsflix.upcoming.data.model.UpcomingResponse
+import com.nicolas.nicolsflix.upcoming.domain.model.UpcomingUiDomain
 
 fun UpcomingResponse.toUiDomain(listUpcoming: List<Result>): ArrayList<UpcomingUiDomain> {
 

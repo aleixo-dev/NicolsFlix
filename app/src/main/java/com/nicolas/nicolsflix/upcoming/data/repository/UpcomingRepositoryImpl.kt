@@ -1,8 +1,8 @@
-package com.nicolas.nicolsflix.presentation.upcoming.data.repository
+package com.nicolas.nicolsflix.upcoming.data.repository
 
-import com.nicolas.nicolsflix.presentation.upcoming.data.datasource.remote.UpcomingRemoteDataSource
-import com.nicolas.nicolsflix.presentation.upcoming.data.mapper.toUiDomain
-import com.nicolas.nicolsflix.presentation.upcoming.domain.model.UpcomingUiDomain
+import com.nicolas.nicolsflix.upcoming.data.datasource.remote.UpcomingRemoteDataSource
+import com.nicolas.nicolsflix.upcoming.data.mapper.toUiDomain
+import com.nicolas.nicolsflix.upcoming.domain.model.UpcomingUiDomain
 
 class UpcomingRepositoryImpl(
     private val remoteDataSource: UpcomingRemoteDataSource

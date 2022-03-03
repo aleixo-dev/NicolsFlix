@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.presentation.upcoming.adapters
+package com.nicolas.nicolsflix.upcoming.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nicolas.nicolsflix.databinding.ItemsLayoutUpcomingBinding
-import com.nicolas.nicolsflix.presentation.upcoming.domain.model.UpcomingUiDomain
+import com.nicolas.nicolsflix.upcoming.domain.model.UpcomingUiDomain
 import com.squareup.picasso.Picasso
 
 class UpcomingAdapter(

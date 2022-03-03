@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.presentation.upcoming.domain.model
+package com.nicolas.nicolsflix.upcoming.domain.model
 
 import java.io.Serializable
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".presentation.upcoming.presentation.UpcomingFragment">
+    tools:context=".upcoming.presentation.UpcomingFragment">
 
     <ProgressBar
         android:id="@+id/progressBarUpcoming"
