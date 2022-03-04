@@ -2,8 +2,8 @@ package com.nicolas.nicolsflix.presentation.home.domain.usecase
 
 import com.nicolas.nicolsflix.presentation.home.data.repository.MovieRepository
 import com.nicolas.nicolsflix.presentation.home.domain.domain.MovieUiDomain
-import com.nicolas.nicolsflix.presentation.home.utils.DataState
 import com.nicolas.nicolsflix.presentation.home.utils.UseCase
+import com.nicolas.nicolsflix.upcoming.utils.DataState
 
 class GetMoviePopularUseCase(
     private val repository: MovieRepository

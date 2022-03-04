@@ -11,9 +11,9 @@ import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
 import com.nicolas.nicolsflix.adapters.TrendingAdapter
 import com.nicolas.nicolsflix.databinding.HomeFragmentBinding
-import com.nicolas.nicolsflix.presentation.home.utils.DataState
 import com.nicolas.nicolsflix.common.showToast
 import com.nicolas.nicolsflix.common.toLowerCase
+import com.nicolas.nicolsflix.upcoming.utils.DataState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
@@ -67,16 +67,13 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
             moviePopularList.observe(viewLifecycleOwner) { movie ->
                 when (movie) {
                     is DataState.Loading -> {
-                        // TODO
                     }
                     is DataState.Success -> {
                         showToast(movie.result[0].title)
                     }
                     is DataState.Error -> {
-                        // TODO
                     }
                     is DataState.Empty -> {
-                        // TODO
                     }
                 }
             }

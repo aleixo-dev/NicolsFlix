@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.nicolas.nicolsflix.data.model.Movie
 import com.nicolas.nicolsflix.presentation.home.domain.domain.MovieUiDomain
 import com.nicolas.nicolsflix.presentation.home.domain.usecase.GetMoviePopularUseCase
-import com.nicolas.nicolsflix.presentation.home.utils.DataState
 import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
+import com.nicolas.nicolsflix.upcoming.utils.DataState
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
