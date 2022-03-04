@@ -74,9 +74,7 @@ class UpcomingViewModelTest {
         val result = ViewState.Error<UpcomingUiDomain>("")
         val collection = mutableListOf<ViewState<List<UpcomingUiDomain>>>()
 
-        upcomingViewModel.movieUpcoming.observeForever {
-            collection.add(it)
-        }
+        upcomingViewModel.movieUpcoming.observeForever { collection.add(it) }
 
         coEvery { getMovieUpcomingUseCase.execute() } returns flowOf(
             Resource.Error(
