@@ -4,30 +4,38 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nicolas.nicolsflix.common.Resource
+import com.nicolas.nicolsflix.common.ViewState
 import com.nicolas.nicolsflix.upcoming.domain.model.UpcomingUiDomain
 import com.nicolas.nicolsflix.upcoming.domain.usecase.GetMovieUpcomingUseCase
-import com.nicolas.nicolsflix.upcoming.utils.DataState
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class UpcomingViewModel(
     private val getMovieUpcomingUseCase: GetMovieUpcomingUseCase
 ) : ViewModel() {
 
-    private val _errorLiveData = MutableLiveData<String>()
-    val errorLiveData: LiveData<String> = _errorLiveData
-
-    private val _movieUpcoming = MutableLiveData<DataState<List<UpcomingUiDomain>>>()
-    val movieUpcoming: LiveData<DataState<List<UpcomingUiDomain>>> = _movieUpcoming.apply {
-        value = DataState.Loading
-    }
+    private val _movieUpcoming = MutableLiveData<ViewState<List<UpcomingUiDomain>>>()
+    val movieUpcoming: LiveData<ViewState<List<UpcomingUiDomain>>> = _movieUpcoming
 
     fun getMovieComing() {
         viewModelScope.launch {
-            try {
-                val result = getMovieUpcomingUseCase.execute()
-                _movieUpcoming.postValue(result)
-            } catch (exception: Exception) {
-                _movieUpcoming.postValue(DataState.Error())
+            _movieUpcoming.value = ViewState.Loading()
+            getMovieUpcomingUseCase.execute().collect {
+                when (it) {
+                    is Resource.Loading -> {
+                        _movieUpcoming.value = ViewState.Loading()
+                    }
+                    is Resource.Success -> {
+                        _movieUpcoming.value = ViewState.Success(it.item)
+                    }
+                    is Resource.Error -> {
+                        _movieUpcoming.value = ViewState.Error(it.throwable)
+                    }
+                    is Resource.Empty -> {
+
+                    }
+                }
             }
         }
     }

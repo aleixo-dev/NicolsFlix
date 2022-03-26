@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.nicolas.nicolsflix.common.ViewState
 import com.nicolas.nicolsflix.databinding.UpcomingFragmentBinding
 import com.nicolas.nicolsflix.upcoming.adapters.UpcomingAdapter
 import com.nicolas.nicolsflix.upcoming.domain.model.UpcomingUiDomain
@@ -34,18 +35,16 @@ class UpcomingFragment : Fragment() {
     }
 
     private fun fetchMovieUpcoming() {
-        viewModel.run {
-            getMovieComing()
-            movieUpcoming.observe(viewLifecycleOwner) { state ->
-                when (state) {
-                    is DataState.Loading -> {
-                    }
-                    is DataState.Success -> {
-                        setRecyclerMovieUpcoming(state.result)
-                    }
-                    is DataState.Empty, is DataState.Error -> {
-                        showToast("No connection internet.")
-                    }
+        viewModel.getMovieComing()
+        viewModel.movieUpcoming.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is ViewState.Loading -> {
+                }
+                is ViewState.Success -> {
+                    setRecyclerMovieUpcoming(state.data)
+                }
+                is ViewState.Empty, is ViewState.Error -> {
+                    showToast("No connection internet.")
                 }
             }
         }
