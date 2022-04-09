@@ -10,16 +10,18 @@ class MovieMapper {
 
             val listMoviePopular = ArrayList<Movie>()
             for (popularMovie in listResponseBody) {
-                val moviePopular = Movie(
-                    popularMovie.id,
-                    popularMovie.title,
-                    popularMovie.posterPath,
-                    popularMovie.backdropPath,
-                    popularMovie.overview,
-                    popularMovie.voteAverage.toString(),
-                    popularMovie.releaseDate
-                )
-                listMoviePopular.add(moviePopular)
+                if (popularMovie.title.isNullOrEmpty().not()) {
+                    val moviePopular = Movie(
+                        popularMovie.id,
+                        popularMovie.title,
+                        popularMovie.posterPath,
+                        popularMovie.backdropPath,
+                        popularMovie.overview,
+                        popularMovie.voteAverage.toString(),
+                        popularMovie.releaseDate
+                    )
+                    listMoviePopular.add(moviePopular)
+                }
             }
             return listMoviePopular
         }

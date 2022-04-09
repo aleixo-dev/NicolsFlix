@@ -38,7 +38,7 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
         backDetails.setOnClickListener {
             findNavController().popBackStack()
         }
-
+        
         textNameMovie.text = detailsMovieArgs.title
         textValueRatingMovie.text = detailsMovieArgs.rating
         textDateMovie.text = detailsMovieArgs.date?.let { FormatDate.getDateMovie(it) }

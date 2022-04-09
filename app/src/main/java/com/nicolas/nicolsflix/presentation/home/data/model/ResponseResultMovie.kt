@@ -24,7 +24,7 @@ data class ResponseResultMovie(
     @SerializedName("release_date")
     val releaseDate: String,
     @SerializedName("title")
-    val title: String,
+    var title: String,
     @SerializedName("video")
     val video: Boolean,
     @SerializedName("vote_average")

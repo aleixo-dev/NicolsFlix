@@ -10,7 +10,7 @@ fun ResponseMovie.toDomainUiModel(movieList: List<ResponseResultMovie>): List<Mo
     for (movie in movieList) {
         val domainMovie = MovieUiDomain(
             id = movie.id.toString(),
-            title = movie.title,
+            title = movie.originalTitle,
             description = movie.overview,
             imagePoster = movie.posterPath,
             imageBackground = movie.backdropPath,
