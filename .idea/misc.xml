@@ -9,11 +9,12 @@
         <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/drawable/bg_movie_upcoming.xml" value="0.2203125" />
         <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/drawable/ic_fire.xml" value="0.2203125" />
         <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/drawable/item_selector.xml" value="0.22083333333333333" />
-        <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/layout/activity_nicolsflix.xml" value="0.25" />
         <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/layout/details_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/layout/error_view.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/layout/home_fragment.xml" value="0.14" />
+        <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/layout/home_fragment.xml" value="0.25" />
         <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/layout/items_layout_upcoming.xml" value="0.33" />
         <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/layout/items_list_movies.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/nicol/AndroidStudioProjects/NicolsFlix/app/src/main/res/layout/my_list_fragment.xml" value="0.20416666666666666" />

@@ -11,12 +11,11 @@ import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
 import com.nicolas.nicolsflix.adapters.TrendingAdapter
 import com.nicolas.nicolsflix.databinding.HomeFragmentBinding
-import com.nicolas.nicolsflix.common.showToast
 import com.nicolas.nicolsflix.common.toLowerCase
 import com.nicolas.nicolsflix.upcoming.utils.DataState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment(R.layout.home_fragment) {
+class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
 
@@ -34,7 +33,6 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setRecyclerViewSearch()
         setRecyclerViewMovieTrending()
         setRecyclerViewMoviePopular()
@@ -42,22 +40,17 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         getMoviePopular()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
     private fun setRecyclerViewMoviePopular() {
         binding.moviePopularRecyclerView.run {
             viewModel.fetchPopularMovie()
-            viewModel.listPopularMovie.observe(viewLifecycleOwner, {
+            viewModel.listPopularMovie.observe(viewLifecycleOwner) {
                 setHasFixedSize(true)
                 adapter = TrendingAdapter(it) { onClickMovie ->
                     val directions =
                         HomeFragmentDirections.goToDetailsFragment(onClickMovie)
                     findNavController().navigate(directions)
                 }
-            })
+            }
         }
     }
 
@@ -69,7 +62,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                     is DataState.Loading -> {
                     }
                     is DataState.Success -> {
-                        showToast(movie.result[0].title)
+
                     }
                     is DataState.Error -> {
                     }
@@ -82,7 +75,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private fun setRecyclerViewSearch() {
         binding.movieSearchRecyclerView.run {
-            viewModel.listNamesMovie.observe(viewLifecycleOwner, {
+            viewModel.listNamesMovie.observe(viewLifecycleOwner) {
                 setHasFixedSize(true)
                 if (it.isEmpty()) {
                     binding.tvMovieNotFound.visibility = View.VISIBLE
@@ -95,13 +88,13 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                         findNavController().navigate(directions)
                     }
                 }
-            })
+            }
         }
     }
 
     private fun setRecyclerViewMovieTrending() {
         binding.movieTrendingRecyclerView.run {
-            viewModel.listTrendingMovie.observe(viewLifecycleOwner, {
+            viewModel.listTrendingMovie.observe(viewLifecycleOwner) {
                 setHasFixedSize(true)
                 adapter = TrendingAdapter(it) { onClickMovie ->
                     val directions =
@@ -110,7 +103,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                         )
                     findNavController().navigate(directions)
                 }
-            })
+            }
         }
     }
 
@@ -136,5 +129,10 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
