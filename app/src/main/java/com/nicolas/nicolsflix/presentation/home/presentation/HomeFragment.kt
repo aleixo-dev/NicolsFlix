@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
 import com.nicolas.nicolsflix.adapters.TrendingAdapter
 import com.nicolas.nicolsflix.databinding.HomeFragmentBinding
@@ -55,19 +55,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun getMoviePopular() {
-        viewModel.run {
-            getMoviePopular()
-            moviePopularList.observe(viewLifecycleOwner) { movie ->
-                when (movie) {
-                    is DataState.Loading -> {
-                    }
-                    is DataState.Success -> {
-
-                    }
-                    is DataState.Error -> {
-                    }
-                    is DataState.Empty -> {
-                    }
+        viewModel.moviePopularList.observe(viewLifecycleOwner) { movie ->
+            when (movie) {
+                is DataState.Loading -> {
+                    // TODO implement loading.
+                }
+                is DataState.Success -> {
+                    // TODO show popular and trending, use fun:
+                    /** @setVisible() */
+                }
+                is DataState.Error -> {
+                    // TODO show layout error
+                }
+                is DataState.Empty -> {
                 }
             }
         }
@@ -78,10 +78,8 @@ class HomeFragment : Fragment() {
             viewModel.listNamesMovie.observe(viewLifecycleOwner) {
                 setHasFixedSize(true)
                 if (it.isEmpty()) {
-                    binding.tvMovieNotFound.visibility = View.VISIBLE
-                    binding.movieSearchRecyclerView.visibility = View.GONE
+                    setVisible(movieNotFound = true)
                 } else {
-                    binding.tvMovieNotFound.visibility = View.GONE
                     adapter = RecyclerSearchAdapter(it) { onClickMovie ->
                         val directions =
                             HomeFragmentDirections.goToDetailsFragment(onClickMovie)
@@ -111,23 +109,27 @@ class HomeFragment : Fragment() {
         binding.include.editSearchMovieHome.addTextChangedListener { movieName ->
             if (movieName.isNullOrEmpty()) {
                 binding.run {
-                    moviePopularRecyclerView.visibility = View.VISIBLE
-                    movieTrendingRecyclerView.visibility = View.VISIBLE
-                    movieSearchRecyclerView.visibility = View.GONE
-                    tvTrendingName.visibility = View.VISIBLE
-                    tvPopularName.visibility = View.VISIBLE
+                    setVisible(containerMovies = true)
                 }
 
             } else {
                 viewModel.fetchNameMovie(toLowerCase(movieName.toString()))
                 binding.run {
-                    moviePopularRecyclerView.visibility = View.GONE
-                    movieTrendingRecyclerView.visibility = View.GONE
-                    movieSearchRecyclerView.visibility = View.VISIBLE
-                    tvTrendingName.visibility = View.GONE
-                    tvPopularName.visibility = View.GONE
+                    setVisible(recyclerSearchMovies = true)
                 }
             }
+        }
+    }
+
+    private fun setVisible(
+        containerMovies: Boolean = false,
+        recyclerSearchMovies: Boolean = false,
+        movieNotFound: Boolean = false
+    ) {
+        with(binding) {
+            linearLayoutContainerMovies.isVisible = containerMovies
+            movieSearchRecyclerView.isVisible = recyclerSearchMovies
+            tvMovieNotFound.isVisible = movieNotFound
         }
     }
 
