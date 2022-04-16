@@ -22,17 +22,6 @@ class HomeViewModel(
         value = DataState.Loading
     }
 
-    fun getMoviePopular() {
-        viewModelScope.launch {
-            try {
-                val result = getMoviePopularUseCase.execute()
-                _moviePopularList.postValue(result)
-            } catch (exception: Exception) {
-                _moviePopularList.postValue(DataState.Error())
-            }
-        }
-    }
-
     private val _listTrendingMovie = MutableLiveData<ArrayList<Movie>>()
     val listTrendingMovie: LiveData<ArrayList<Movie>> = _listTrendingMovie
 
@@ -44,6 +33,18 @@ class HomeViewModel(
 
     init {
         fetchTrendingMovies()
+        getMoviePopular()
+    }
+
+    private fun getMoviePopular() {
+        viewModelScope.launch {
+            try {
+                val result = getMoviePopularUseCase.execute()
+                _moviePopularList.postValue(result)
+            } catch (exception: Exception) {
+                _moviePopularList.postValue(DataState.Error())
+            }
+        }
     }
 
     private fun fetchTrendingMovies() {
@@ -61,10 +62,8 @@ class HomeViewModel(
     fun fetchNameMovie(titleMovie: String) {
         viewModelScope.launch {
             val result = movieApiRepositoryImpl.getMovieSearch(titleMovie)
-            if (result.isNullOrEmpty()) {
-                _listNamesMovie.value = ArrayList()
-            } else {
-                _listNamesMovie.value = result!!
+            result?.let { movies ->
+                _listNamesMovie.value = movies
             }
         }
     }

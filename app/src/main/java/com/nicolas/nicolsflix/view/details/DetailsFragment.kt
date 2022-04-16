@@ -49,10 +49,8 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
 
         saveMovieToList(detailsMovieArgs)
 
-        detailsMovieArgs.id.let {
-            if (it != null) {
-                viewModel.getMovieSimilar(it)
-            }
+        detailsMovieArgs.id?.let {
+            viewModel.getMovieSimilar(it)
         }
 
         viewModel.listMovieSimilar.observe(viewLifecycleOwner) { listMovie ->

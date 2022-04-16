@@ -4,19 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
 import com.nicolas.nicolsflix.adapters.TrendingAdapter
 import com.nicolas.nicolsflix.databinding.HomeFragmentBinding
-import com.nicolas.nicolsflix.common.showToast
 import com.nicolas.nicolsflix.common.toLowerCase
 import com.nicolas.nicolsflix.upcoming.utils.DataState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment(R.layout.home_fragment) {
+class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
 
@@ -34,7 +33,6 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setRecyclerViewSearch()
         setRecyclerViewMovieTrending()
         setRecyclerViewMoviePopular()
@@ -42,39 +40,34 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         getMoviePopular()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
     private fun setRecyclerViewMoviePopular() {
         binding.moviePopularRecyclerView.run {
             viewModel.fetchPopularMovie()
-            viewModel.listPopularMovie.observe(viewLifecycleOwner, {
+            viewModel.listPopularMovie.observe(viewLifecycleOwner) {
                 setHasFixedSize(true)
                 adapter = TrendingAdapter(it) { onClickMovie ->
                     val directions =
                         HomeFragmentDirections.goToDetailsFragment(onClickMovie)
                     findNavController().navigate(directions)
                 }
-            })
+            }
         }
     }
 
     private fun getMoviePopular() {
-        viewModel.run {
-            getMoviePopular()
-            moviePopularList.observe(viewLifecycleOwner) { movie ->
-                when (movie) {
-                    is DataState.Loading -> {
-                    }
-                    is DataState.Success -> {
-                        showToast(movie.result[0].title)
-                    }
-                    is DataState.Error -> {
-                    }
-                    is DataState.Empty -> {
-                    }
+        viewModel.moviePopularList.observe(viewLifecycleOwner) { movie ->
+            when (movie) {
+                is DataState.Loading -> {
+                    // TODO implement loading.
+                }
+                is DataState.Success -> {
+                    // TODO show popular and trending, use fun:
+                    /** @setVisible() */
+                }
+                is DataState.Error -> {
+                    // TODO show layout error
+                }
+                is DataState.Empty -> {
                 }
             }
         }
@@ -82,26 +75,24 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private fun setRecyclerViewSearch() {
         binding.movieSearchRecyclerView.run {
-            viewModel.listNamesMovie.observe(viewLifecycleOwner, {
+            viewModel.listNamesMovie.observe(viewLifecycleOwner) {
                 setHasFixedSize(true)
                 if (it.isEmpty()) {
-                    binding.tvMovieNotFound.visibility = View.VISIBLE
-                    binding.movieSearchRecyclerView.visibility = View.GONE
+                    setVisible(movieNotFound = true)
                 } else {
-                    binding.tvMovieNotFound.visibility = View.GONE
                     adapter = RecyclerSearchAdapter(it) { onClickMovie ->
                         val directions =
                             HomeFragmentDirections.goToDetailsFragment(onClickMovie)
                         findNavController().navigate(directions)
                     }
                 }
-            })
+            }
         }
     }
 
     private fun setRecyclerViewMovieTrending() {
         binding.movieTrendingRecyclerView.run {
-            viewModel.listTrendingMovie.observe(viewLifecycleOwner, {
+            viewModel.listTrendingMovie.observe(viewLifecycleOwner) {
                 setHasFixedSize(true)
                 adapter = TrendingAdapter(it) { onClickMovie ->
                     val directions =
@@ -110,7 +101,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                         )
                     findNavController().navigate(directions)
                 }
-            })
+            }
         }
     }
 
@@ -118,23 +109,32 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         binding.include.editSearchMovieHome.addTextChangedListener { movieName ->
             if (movieName.isNullOrEmpty()) {
                 binding.run {
-                    moviePopularRecyclerView.visibility = View.VISIBLE
-                    movieTrendingRecyclerView.visibility = View.VISIBLE
-                    movieSearchRecyclerView.visibility = View.GONE
-                    tvTrendingName.visibility = View.VISIBLE
-                    tvPopularName.visibility = View.VISIBLE
+                    setVisible(containerMovies = true)
                 }
 
             } else {
                 viewModel.fetchNameMovie(toLowerCase(movieName.toString()))
                 binding.run {
-                    moviePopularRecyclerView.visibility = View.GONE
-                    movieTrendingRecyclerView.visibility = View.GONE
-                    movieSearchRecyclerView.visibility = View.VISIBLE
-                    tvTrendingName.visibility = View.GONE
-                    tvPopularName.visibility = View.GONE
+                    setVisible(recyclerSearchMovies = true)
                 }
             }
         }
+    }
+
+    private fun setVisible(
+        containerMovies: Boolean = false,
+        recyclerSearchMovies: Boolean = false,
+        movieNotFound: Boolean = false
+    ) {
+        with(binding) {
+            linearLayoutContainerMovies.isVisible = containerMovies
+            movieSearchRecyclerView.isVisible = recyclerSearchMovies
+            tvMovieNotFound.isVisible = movieNotFound
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
