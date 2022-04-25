@@ -5,7 +5,7 @@ import com.nicolas.nicolsflix.data.db.NicolsDatabase
 import com.nicolas.nicolsflix.data.network.RetrofitInitializer
 import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
 import com.nicolas.nicolsflix.repository.database.MovieDaoRepositoryImpl
-import com.nicolas.nicolsflix.service.MovieService
+import com.nicolas.nicolsflix.network.MovieService
 import com.nicolas.nicolsflix.viewmodel.DetailsViewModel
 import com.nicolas.nicolsflix.viewmodel.MyListViewModel
 import com.nicolas.nicolsflix.viewmodel.SearchViewModel
