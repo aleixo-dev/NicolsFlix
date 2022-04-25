@@ -1,9 +1,11 @@
-package com.nicolas.nicolsflix.service
+package com.nicolas.nicolsflix.network
 
 import com.nicolas.nicolsflix.data.model.GenreResponse
 import com.nicolas.nicolsflix.data.model.MovieResponse
 import com.nicolas.nicolsflix.data.network.api.search.response.MovieSearchResult
 import com.nicolas.nicolsflix.common.Constants
+import com.nicolas.nicolsflix.network.models.remote.Cast
+import com.nicolas.nicolsflix.network.models.remote.TrailerMovie
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -44,4 +46,16 @@ interface MovieService {
         @Query("api_key") apiKey: String = Constants.API_KEY,
         @Query("language") language: String = Constants.LANGUAGE_BR,
     ): Response<MovieSearchResult>
+
+    @GET(Constants.ENDPOINT_PERSON_CREDITS)
+    suspend fun getCastsMovieDetails(
+        @Path("movie_id") personId: Int,
+        @Query("api_key") apiKey: String = Constants.API_KEY
+    ): Cast
+
+    @GET(Constants.ENDPOINT_MOVIES_VIDEOS)
+    suspend fun getTrailerVideo(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String = Constants.API_KEY
+    ): TrailerMovie
 }
