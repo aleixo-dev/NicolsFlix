@@ -11,8 +11,8 @@
         android:label="home_fragment"
         tools:layout="@layout/home_fragment">
         <action
-            android:id="@+id/go_to_details_fragment"
-            app:destination="@id/navigation_details" />
+            android:id="@+id/action_home_navigation_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/list_navigation"
@@ -52,4 +52,13 @@
         android:name="com.nicolas.nicolsflix.view.search.SearchFragment"
         android:label="search_fragment"
         tools:layout="@layout/search_fragment" />
+    <fragment
+        tools:layout="@layout/detail_fragment"
+        android:id="@+id/detailFragment"
+        android:name="com.nicolas.nicolsflix.presentation.detail.presentation.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="Movie"
+            app:argType="com.nicolas.nicolsflix.data.model.Movie" />
+    </fragment>
 </navigation>

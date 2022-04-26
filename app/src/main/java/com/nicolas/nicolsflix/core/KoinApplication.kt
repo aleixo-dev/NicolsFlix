@@ -2,6 +2,7 @@ package com.nicolas.nicolsflix.core
 
 import android.app.Application
 import com.nicolas.nicolsflix.di.*
+import com.nicolas.nicolsflix.presentation.detail.DetailDiModule
 import com.nicolas.nicolsflix.presentation.home.HomeDiModule
 import com.nicolas.nicolsflix.upcoming.UpcomingDiModule
 import org.koin.android.ext.koin.androidContext
@@ -25,7 +26,8 @@ class KoinApplication : Application() {
                 databaseModule,
                 myListModule,
                 UpcomingDiModule.instance,
-                HomeDiModule.instance
+                HomeDiModule.instance,
+                DetailDiModule.instance
             )
         }
     }
