@@ -1,4 +1,4 @@
-package com.nicolas.nicolsflix.upcoming.utils
+package com.nicolas.nicolsflix.common
 
 import android.content.Context
 import android.widget.ImageView
