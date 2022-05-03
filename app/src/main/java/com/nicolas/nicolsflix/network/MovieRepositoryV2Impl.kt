@@ -15,4 +15,9 @@ class MovieRepositoryV2Impl(
         val response = remote.getTrailerVideo(movieId)
         emit(response.trailers)
     }
+
+    override suspend fun getPersonDetail(personId: Int) = flow {
+        val response = remote.getPersonDetail(personId)
+        emit(response)
+    }
 }
