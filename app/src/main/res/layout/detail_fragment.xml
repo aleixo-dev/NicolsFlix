@@ -8,6 +8,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
+        app:liftOnScroll="true"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
+            app:layout_scrollFlags="scroll|enterAlways|snap"
             android:id="@+id/topAppBar"
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
@@ -40,7 +42,7 @@
             <ImageView
                 android:id="@+id/imageView_backgroundMovie"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="250dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -2,6 +2,7 @@ package com.nicolas.nicolsflix.core
 
 import android.app.Application
 import com.nicolas.nicolsflix.di.*
+import com.nicolas.nicolsflix.presentation.cast.CastDiModule
 import com.nicolas.nicolsflix.presentation.detail.DetailDiModule
 import com.nicolas.nicolsflix.presentation.home.HomeDiModule
 import com.nicolas.nicolsflix.upcoming.UpcomingDiModule
@@ -27,7 +28,8 @@ class KoinApplication : Application() {
                 myListModule,
                 UpcomingDiModule.instance,
                 HomeDiModule.instance,
-                DetailDiModule.instance
+                DetailDiModule.instance,
+                CastDiModule.instance
             )
         }
     }

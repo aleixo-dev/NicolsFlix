@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".presentation.cast.ui.CastFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_castPhotoDetail"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_castBiographyDetail"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView_castPhotoDetail"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_castPhotoDetail"
+        tools:text="Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_castBiographyDetail" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_castNameDetail"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_castPhotoDetail"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Tobey Maguire" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_castDepartmentName"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView_castNameDetail"
+        app:layout_constraintTop_toBottomOf="@+id/textView_castNameDetail"
+        tools:text="Acting" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_castBirthday"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView_castDepartmentName"
+        app:layout_constraintTop_toBottomOf="@+id/textView_castDepartmentName"
+        tools:text="27-06-1975" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView_castPlaceOfBirth"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView_castBirthday"
+        app:layout_constraintTop_toBottomOf="@+id/textView_castBirthday"
+        tools:text="Santa Monica, California, USA" />
+</androidx.constraintlayout.widget.ConstraintLayout>

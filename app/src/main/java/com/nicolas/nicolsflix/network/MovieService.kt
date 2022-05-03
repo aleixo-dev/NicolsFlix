@@ -5,6 +5,7 @@ import com.nicolas.nicolsflix.data.model.MovieResponse
 import com.nicolas.nicolsflix.data.network.api.search.response.MovieSearchResult
 import com.nicolas.nicolsflix.common.Constants
 import com.nicolas.nicolsflix.network.models.remote.Cast
+import com.nicolas.nicolsflix.network.models.remote.CastDetail
 import com.nicolas.nicolsflix.network.models.remote.TrailerMovie
 import retrofit2.Response
 import retrofit2.http.GET
@@ -58,4 +59,16 @@ interface MovieService {
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = Constants.API_KEY
     ): TrailerMovie
+
+    @GET(Constants.ENDPOINT_PERSON)
+    suspend fun getPersonDetail(
+        @Path("person_id") personId: Int,
+        @Query("api_key") apiKey: String = Constants.API_KEY,
+    ): CastDetail
+
+    @GET(Constants.ENDPOINT_PERSON_MOVIE_CREDITS)
+    suspend fun getMovieParticipation(
+        @Path("person_id") personId: Int,
+        @Query("api_key") apiKey: String = Constants.API_KEY
+    )
 }
