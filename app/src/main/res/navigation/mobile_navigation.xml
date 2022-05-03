@@ -60,5 +60,17 @@
         <argument
             android:name="Movie"
             app:argType="com.nicolas.nicolsflix.data.model.Movie" />
+        <action
+            android:id="@+id/action_detailFragment_to_castFragment"
+            app:destination="@id/castFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/castFragment"
+        android:name="com.nicolas.nicolsflix.presentation.cast.ui.CastFragment"
+        android:label="cast_fragment"
+        tools:layout="@layout/cast_fragment" >
+        <argument
+            android:name="personId"
+            app:argType="integer" />
     </fragment>
 </navigation>
