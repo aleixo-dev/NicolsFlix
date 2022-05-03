@@ -13,7 +13,7 @@ import com.nicolas.nicolsflix.common.Constants
 import com.nicolas.nicolsflix.databinding.DetailFragmentBinding
 import com.nicolas.nicolsflix.network.models.remote.CastFromMovie
 import com.nicolas.nicolsflix.presentation.detail.adpter.CastAdapter
-import com.nicolas.nicolsflix.upcoming.utils.LoadImage
+import com.nicolas.nicolsflix.common.LoadImage
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -87,7 +87,9 @@ class DetailFragment : Fragment() {
         with(binding) {
             recyclerViewCastMovieDetail.apply {
                 adapter = CastAdapter(casts) { onCastClick ->
-                    // TODO: open cast screen detail when click.
+                    val directions =
+                        DetailFragmentDirections.actionDetailFragmentToCastFragment(onCastClick.id)
+                    findNavController().navigate(directions)
                 }
                 setHasFixedSize(true)
             }
