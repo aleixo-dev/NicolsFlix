@@ -29,7 +29,7 @@ class KoinApplication : Application() {
                 UpcomingDiModule.instance,
                 HomeDiModule.instance,
                 DetailDiModule.instance,
-                CastDiModule.instance
+                CastDiModule.instance,
             )
         }
     }
