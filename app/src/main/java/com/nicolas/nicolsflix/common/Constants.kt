@@ -15,7 +15,7 @@ object Constants {
     const val ENDPOINT_POPULAR = "movie/popular"
     const val ENDPOINT_SIMILAR = "movie/{movie_id}/similar"
     const val ENDPOINT_PERSON = "person/{person_id}"
-    const val ENDPOINT_PERSON_MOVIE_CREDITS = "/person/{person_id}/movie_credits"
+    const val ENDPOINT_PERSON_MOVIE_CREDITS = "person/{person_id}/movie_credits"
     const val LANGUAGE_BR = "pt-BR"
     const val LANGUAGE_US = "en-US"
 

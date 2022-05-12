@@ -69,6 +69,7 @@ interface MovieService {
     @GET(Constants.ENDPOINT_PERSON_MOVIE_CREDITS)
     suspend fun getMovieParticipation(
         @Path("person_id") personId: Int,
-        @Query("api_key") apiKey: String = Constants.API_KEY
+        @Query("api_key") apiKey: String = Constants.API_KEY,
+        @Query("language") language: String = Constants.LANGUAGE_BR
     )
 }
