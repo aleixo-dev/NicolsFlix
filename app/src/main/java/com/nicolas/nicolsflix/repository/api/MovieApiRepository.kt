@@ -1,11 +1,11 @@
 package com.nicolas.nicolsflix.repository.api
 
 import com.nicolas.nicolsflix.data.model.Movie
-import com.nicolas.nicolsflix.data.model.MovieResponse
+import kotlinx.coroutines.flow.Flow
 
 interface MovieApiRepository {
 
-    suspend fun getMovieTrending(): ArrayList<Movie>?
+    suspend fun getMovieTrending(): Flow<List<Movie>>
     suspend fun getMovieSimilar(movieId: Int): ArrayList<Movie>?
     suspend fun getMovieSearch(movieName: String?): ArrayList<Movie>?
 

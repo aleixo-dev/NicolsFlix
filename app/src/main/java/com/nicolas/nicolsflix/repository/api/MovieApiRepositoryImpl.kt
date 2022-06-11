@@ -5,21 +5,18 @@ import com.nicolas.nicolsflix.data.model.MovieResponse
 import com.nicolas.nicolsflix.data.network.RetrofitInitializer
 import com.nicolas.nicolsflix.data.network.mapper.MovieMapper
 import com.nicolas.nicolsflix.data.network.mapper.MovieSearchMapper
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import retrofit2.awaitResponse
 
 class MovieApiRepositoryImpl(
     private val movieApi: RetrofitInitializer,
 ) : MovieApiRepository {
 
-    override suspend fun getMovieTrending(): ArrayList<Movie>? {
-
-        val service = movieApi.movieTrendingService().getMovieTrending().awaitResponse()
-        val body = service.body()
-        return if (service.isSuccessful && body != null) {
-            MovieMapper.responseToDomain(body.results)
-        } else {
-            null
-        }
+    override suspend fun getMovieTrending(): Flow<List<Movie>> = flow {
+        val service = movieApi.movieTrendingService().getMovieTrending()
+        val body = service.results
+        emit(MovieMapper.responseToDomain(body))
     }
 
     override suspend fun getMovieSimilar(movieId: Int): ArrayList<Movie>? {
