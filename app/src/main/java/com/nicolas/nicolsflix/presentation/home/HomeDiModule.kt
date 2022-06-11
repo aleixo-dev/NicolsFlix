@@ -9,6 +9,7 @@ import com.nicolas.nicolsflix.presentation.home.domain.usecase.GetMoviePopularUs
 import com.nicolas.nicolsflix.presentation.home.presentation.HomeViewModel
 import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
 import com.nicolas.nicolsflix.common.Constants
+import com.nicolas.nicolsflix.network.MovieRepositoryV2Impl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -23,13 +24,12 @@ object HomeDiModule {
         viewModel {
             HomeViewModel(
                 MovieApiRepositoryImpl(movieApi = get()),
-                GetMoviePopularUseCase(repository = get())
+                movieRepositoryV2 = get(),
+                getMoviePopularUseCase = get()
             )
         }
 
         single { provideRetrofitService(get()) }
-        single { provideRetrofit() }
-        single { provideOkHttp() }
 
         factory {
             GetMoviePopularUseCase(repository = get())
@@ -46,29 +46,8 @@ object HomeDiModule {
                 api = get()
             )
         }
-        
     }
 
     private fun provideRetrofitService(retrofit: Retrofit): MovieApi =
         retrofit.create(MovieApi::class.java)
-
-    private fun provideRetrofit(): Retrofit =
-        Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(provideOkHttp())
-            .build()
-
-    private fun provideOkHttp(): OkHttpClient {
-
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-
-        return OkHttpClient.Builder()
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .addInterceptor(httpLoggingInterceptor)
-            .build()
-    }
 }
