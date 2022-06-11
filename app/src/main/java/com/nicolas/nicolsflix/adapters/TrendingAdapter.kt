@@ -1,29 +1,29 @@
 package com.nicolas.nicolsflix.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.TextView
-import androidx.compose.ui.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
+import com.nicolas.nicolsflix.common.Constants.LOAD_IMAGE_URL
+import com.nicolas.nicolsflix.common.LoadImage
+import com.nicolas.nicolsflix.common.loadImage
 import com.nicolas.nicolsflix.data.model.Movie
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.items_recycler_home.view.*
+import com.nicolas.nicolsflix.databinding.NewItemsRecyclerViewBinding
 import kotlinx.android.synthetic.main.new_items_recycler_view.view.*
 
 class TrendingAdapter(
-    private val listMovie: ArrayList<Movie>,
-    private val onMovieTrendingClickListener: ((movie: Movie) -> Unit)
+    private val listMovie: List<Movie>,
+    private val onItemClick: (movie: Movie) -> Unit,
 ) : RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>() {
 
+    var movieName: String? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrendingViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.new_items_recycler_view, parent, false)
-        return TrendingViewHolder(view, onMovieTrendingClickListener)
+        val view =
+            NewItemsRecyclerViewBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+        return TrendingViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: TrendingViewHolder, position: Int) {
@@ -32,37 +32,30 @@ class TrendingAdapter(
 
     override fun getItemCount() = listMovie.size
 
-    class TrendingViewHolder(
-        itemView: View,
-        private val onMovieTrendingClickListener: ((movie: Movie) -> Unit)
-    ) : RecyclerView.ViewHolder(itemView) {
-
-        // private val imgHomeView: ImageView = itemView.imageTrendingView
-
-        /** Implementações do novo layout.       */
-
-        private val imgPosterMovie: ImageView = itemView.imgPosterMovie
-        private val tvNameMovie: TextView = itemView.tvNameMovie
-        private val ratingBarMovie: RatingBar = itemView.ratingBarMovie
+    inner class TrendingViewHolder(
+        private val binding: NewItemsRecyclerViewBinding,
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movie: Movie) {
+            binding.apply {
+                imgPosterMovie.loadImage(
+                    imgPosterMovie.context,
+                    "$LOAD_IMAGE_URL${movie.poster}"
+                )
 
-            Picasso.get()
-                .load("https://image.tmdb.org/t/p/w500/${movie.poster}")
-                .into(imgPosterMovie)
+                movie.title?.let { titleMovie -> tvNameMovie.text = titleMovie }
+                movie.rating?.let { rating ->
+                    ratingBarMovie.rating = rating.toFloat() / RATING_BAR_DIVIDER
+                }
 
-            if(!movie.title.equals("")) {
-                tvNameMovie.text = movie.title
-            }
-
-            if (movie.rating != null) {
-                val rating = movie.rating.toFloat() / 2
-                ratingBarMovie.rating = rating
-            }
-
-            itemView.setOnClickListener {
-                onMovieTrendingClickListener.invoke(movie)
+                itemView.setOnClickListener {
+                    onItemClick.invoke(movie)
+                }
             }
         }
+    }
+
+    companion object {
+        const val RATING_BAR_DIVIDER = 2
     }
 }

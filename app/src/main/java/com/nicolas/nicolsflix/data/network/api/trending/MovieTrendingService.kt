@@ -11,6 +11,6 @@ interface MovieTrendingService {
     fun getMovieTrending(
         @Query("api_key") apiKey: String = "cead12b729988cec6e29f8bfd5d35116",
         @Query("language") language: String = "en-US"
-    ): Call<MoviePopularResponseBody>
+    ): MoviePopularResponseBody
 
 }

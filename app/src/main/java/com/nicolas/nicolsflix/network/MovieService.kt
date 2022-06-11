@@ -4,6 +4,7 @@ import com.nicolas.nicolsflix.data.model.GenreResponse
 import com.nicolas.nicolsflix.data.model.MovieResponse
 import com.nicolas.nicolsflix.data.network.api.search.response.MovieSearchResult
 import com.nicolas.nicolsflix.common.Constants
+import com.nicolas.nicolsflix.data.network.api.popular.response.MoviePopularResponseBody
 import com.nicolas.nicolsflix.network.models.remote.Cast
 import com.nicolas.nicolsflix.network.models.remote.CastDetail
 import com.nicolas.nicolsflix.network.models.remote.TrailerMovie
@@ -39,7 +40,7 @@ interface MovieService {
     suspend fun getTrendingMovie(
         @Query("api_key") apiKey: String = Constants.API_KEY,
         @Query("language") language: String = Constants.LANGUAGE_BR
-    ): Response<MovieResponse>
+    ): MoviePopularResponseBody
 
     @GET(Constants.ENDPOINT_SEARCH)
     suspend fun getSearchMovie(

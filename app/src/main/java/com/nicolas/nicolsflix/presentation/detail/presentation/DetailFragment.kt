@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.transition.platform.*
 import com.nicolas.nicolsflix.R
@@ -14,6 +15,8 @@ import com.nicolas.nicolsflix.databinding.DetailFragmentBinding
 import com.nicolas.nicolsflix.network.models.remote.CastFromMovie
 import com.nicolas.nicolsflix.presentation.detail.adpter.CastAdapter
 import com.nicolas.nicolsflix.common.LoadImage
+import com.nicolas.nicolsflix.common.loadImage
+import com.nicolas.nicolsflix.common.showToast
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,22 +48,32 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupTopAppBar()
-        setupMovie()
+        setupMovieInfo()
         observerChangeInViewModel()
         setupArgumentsScreen()
     }
 
     private fun setupArgumentsScreen() {
         arguments.movie.id?.let {
-            viewModel.run {
+            viewModel.apply {
                 getCastMovieDetail(it)
                 getTrailerVideo(it)
             }
         }
+
+        foo(
+            block = {
+                showToast(it.toString())
+            }
+        )
+    }
+
+    private fun foo(block: (Int) -> Unit) {
+        block(11)
     }
 
     private fun observerChangeInViewModel() {
-        viewModel.run {
+        viewModel.apply {
             casts.observe(viewLifecycleOwner) { casts ->
                 setupRecyclerViewCasts(casts)
             }
@@ -87,13 +100,16 @@ class DetailFragment : Fragment() {
         with(binding) {
             recyclerViewCastMovieDetail.apply {
                 adapter = CastAdapter(casts) { onCastClick ->
-                    val directions =
-                        DetailFragmentDirections.actionDetailFragmentToCastFragment(onCastClick.id)
-                    findNavController().navigate(directions)
+                    navigateNext(onCastClick.id)
                 }
-                setHasFixedSize(true)
             }
         }
+    }
+
+    private fun navigateNext(movieId: Int) {
+        val directions =
+            DetailFragmentDirections.actionDetailFragmentToCastFragment(movieId)
+        findNavController().navigate(directions)
     }
 
     private fun setupTopAppBar() {
@@ -112,16 +128,12 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setupMovie() {
+    private fun setupMovieInfo() = context?.let { ctx ->
         binding.apply {
-            context?.let { context ->
-                LoadImage.load(
-                    context,
-                    Constants.LOAD_IMAGE_URL + "${arguments.movie.posterDetails}",
-                    imageViewBackgroundMovie
-                )
-            }
-
+            imageViewBackgroundMovie.loadImage(
+                imageViewBackgroundMovie.context,
+                "${Constants.LOAD_IMAGE_URL}${arguments.movie.posterDetails}"
+            )
             textViewNameMovie.text = arguments.movie.title
             textViewMovieDescription.text = arguments.movie.description
             textViewMovieRate.text = arguments.movie.rating

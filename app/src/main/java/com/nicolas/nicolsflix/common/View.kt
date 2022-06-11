@@ -13,11 +13,8 @@ fun View.show() {
     visibility = View.VISIBLE
 }
 
-fun Context.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(this, message, duration).show()
-}
-
-fun Fragment.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
-    requireContext().showToast(message, duration)
-}
+fun Fragment.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) =
+    context?.let { context ->
+        Toast.makeText(context, message, duration).show()
+    }
 
