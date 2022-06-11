@@ -5,17 +5,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nicolas.nicolsflix.data.model.Movie
+import com.nicolas.nicolsflix.network.MovieRepositoryV2
 import com.nicolas.nicolsflix.presentation.home.domain.domain.MovieUiDomain
 import com.nicolas.nicolsflix.presentation.home.domain.usecase.GetMoviePopularUseCase
-import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
+import com.nicolas.nicolsflix.repository.api.MovieApiRepository
 import com.nicolas.nicolsflix.upcoming.utils.DataState
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class HomeViewModel(
-    private val movieApiRepositoryImpl: MovieApiRepositoryImpl,
+    private val movieApiRepository: MovieApiRepository,
+    private val movieRepositoryV2: MovieRepositoryV2,
     private val getMoviePopularUseCase: GetMoviePopularUseCase
 ) : ViewModel() {
+
+    private val _state = MutableLiveData<State>()
+    val state: LiveData<State> get() = _state
+
+    private val _screenState = MutableLiveData<HomeState>()
+    val screenState: LiveData<HomeState> get() = _screenState
 
     private val _moviePopularList = MutableLiveData<DataState<List<MovieUiDomain>>>()
     val moviePopularList: LiveData<DataState<List<MovieUiDomain>>> = _moviePopularList.apply {
@@ -31,9 +40,14 @@ class HomeViewModel(
     private val _listPopularMovie = MutableLiveData<ArrayList<Movie>>()
     val listPopularMovie: LiveData<ArrayList<Movie>> = _listPopularMovie
 
-    init {
-        fetchTrendingMovies()
-        getMoviePopular()
+    fun interact(event: HomeEvent) {
+        when (event) {
+            HomeEvent.OnOpened -> {
+                fetchTrendingMovies()
+                getMoviePopular()
+                fetchPopularMovie()
+            }
+        }
     }
 
     private fun getMoviePopular() {
@@ -49,22 +63,44 @@ class HomeViewModel(
 
     private fun fetchTrendingMovies() {
         viewModelScope.launch {
-            _listTrendingMovie.value = movieApiRepositoryImpl.getMovieTrending()
+            movieRepositoryV2.getTrendingMovie()
+                .onStart {
+                    _state.value = State.Loading
+                    setState(HomeState.Loading)
+                }
+                .catch {
+                    _state.value = State.Error(it.message)
+                    setState(HomeState.Error(it.message))
+                }
+                .collect { movies ->
+                    _state.value = State.Success(movies)
+                    setState(HomeState.Success(movies))
+                }
         }
     }
 
     fun fetchPopularMovie() {
         viewModelScope.launch {
-            _listPopularMovie.value = movieApiRepositoryImpl.getPopularMovie()
+            _listPopularMovie.value = movieApiRepository.getPopularMovie()
         }
     }
 
     fun fetchNameMovie(titleMovie: String) {
         viewModelScope.launch {
-            val result = movieApiRepositoryImpl.getMovieSearch(titleMovie)
+            val result = movieApiRepository.getMovieSearch(titleMovie)
             result?.let { movies ->
                 _listNamesMovie.value = movies
             }
         }
+    }
+
+    sealed class State {
+        object Loading : State()
+        data class Success(val movies: List<Movie>) : State()
+        data class Error(val error: String?) : State()
+    }
+
+    private fun setState(newState: HomeState) {
+        _screenState.value = newState
     }
 }

@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.common.Constants
 import com.nicolas.nicolsflix.common.LoadImage
+import com.nicolas.nicolsflix.common.loadImage
 import com.nicolas.nicolsflix.databinding.CastFragmentBinding
 import com.nicolas.nicolsflix.network.models.remote.CastDetail
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -50,12 +52,11 @@ class CastFragment : Fragment() {
         setupInfoPerson(person)
     }
 
-    private fun setupImage(personImage: String) = context?.let { context ->
-        binding.apply {
-            LoadImage.load(
-                context,
-                Constants.LOAD_IMAGE_URL + personImage,
-                includeCast.imageViewCastPhotoDetail
+    private fun setupImage(personImage: String) {
+        binding.includeCast.imageViewCastPhotoDetail.apply {
+            loadImage(
+                this.context,
+                "${Constants.LOAD_IMAGE_URL}$personImage"
             )
         }
     }
