@@ -9,6 +9,7 @@ import com.nicolas.nicolsflix.network.MovieService
 import com.nicolas.nicolsflix.viewmodel.DetailsViewModel
 import com.nicolas.nicolsflix.viewmodel.MyListViewModel
 import com.nicolas.nicolsflix.viewmodel.SearchViewModel
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -68,7 +69,7 @@ val detailsModule = module {
         DetailsViewModel(
             MovieDaoRepositoryImpl(
                 movieDao = get()
-            ), MovieApiRepositoryImpl(movieApi = get())
+            ), MovieApiRepositoryImpl(movieApi = get(), coroutineDispatcher = Dispatchers.IO)
         )
     }
 }
@@ -77,7 +78,8 @@ val searchModules = module {
     viewModel {
         SearchViewModel(
             MovieApiRepositoryImpl(
-                movieApi = get()
+                movieApi = get(),
+                coroutineDispatcher = Dispatchers.IO
             )
         )
     }

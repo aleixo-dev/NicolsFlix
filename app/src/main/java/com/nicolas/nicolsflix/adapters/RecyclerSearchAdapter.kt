@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.items_search_movie.view.*
 
 class RecyclerSearchAdapter(
-    private val listMovieSearch: ArrayList<Movie>,
+    private val listMovieSearch: List<Movie>,
     private val movieClickListener: ((movie: Movie) -> Unit)
 ) :
     RecyclerView.Adapter<RecyclerSearchAdapter.ViewHolder>() {
@@ -29,7 +29,7 @@ class RecyclerSearchAdapter(
 
     class ViewHolder(
         itemView: View,
-        listMovieSearch: ArrayList<Movie>?,
+        listMovieSearch: List<Movie>?,
         private val movieClickListener: ((movie: Movie) -> Unit)
     ) :
         RecyclerView.ViewHolder(itemView) {
