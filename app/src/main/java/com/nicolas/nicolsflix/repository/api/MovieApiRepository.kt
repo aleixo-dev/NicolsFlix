@@ -7,7 +7,7 @@ interface MovieApiRepository {
 
     suspend fun getMovieTrending(): Flow<List<Movie>>
     suspend fun getMovieSimilar(movieId: Int): ArrayList<Movie>?
-    suspend fun getMovieSearch(movieName: String?): ArrayList<Movie>?
+    suspend fun getMovieSearch(movieName: String?): Flow<List<Movie>>
 
     /** New Implementation 'MovieService' */
     suspend fun getPopularMovie(): ArrayList<Movie>?
