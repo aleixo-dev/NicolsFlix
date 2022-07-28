@@ -1,5 +1,6 @@
 package com.nicolas.nicolsflix.presentation.home.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +12,7 @@ import com.nicolas.nicolsflix.presentation.home.domain.usecase.GetMoviePopularUs
 import com.nicolas.nicolsflix.repository.api.MovieApiRepository
 import com.nicolas.nicolsflix.upcoming.utils.DataState
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
@@ -34,8 +36,8 @@ class HomeViewModel(
     private val _listTrendingMovie = MutableLiveData<ArrayList<Movie>>()
     val listTrendingMovie: LiveData<ArrayList<Movie>> = _listTrendingMovie
 
-    private val _listNamesMovie = MutableLiveData<ArrayList<Movie>>()
-    val listNamesMovie: LiveData<ArrayList<Movie>> = _listNamesMovie
+    private val _listNamesMovie = MutableLiveData<List<Movie>>()
+    val listNamesMovie: LiveData<List<Movie>> = _listNamesMovie
 
     private val _listPopularMovie = MutableLiveData<ArrayList<Movie>>()
     val listPopularMovie: LiveData<ArrayList<Movie>> = _listPopularMovie
@@ -87,10 +89,13 @@ class HomeViewModel(
 
     fun fetchNameMovie(titleMovie: String) {
         viewModelScope.launch {
-            val result = movieApiRepository.getMovieSearch(titleMovie)
-            result?.let { movies ->
-                _listNamesMovie.value = movies
-            }
+            movieApiRepository.getMovieSearch(titleMovie)
+                .onStart { Log.d("NICONICO", "fetchNameMovie: loading ") }
+                .catch { Log.d("NICONICO", "fetchNameMovie: $it ") }
+                .collect {
+                    Log.d("NICONICO", "fetchNameMovie: $it ")
+                    _listNamesMovie.value = it
+                }
         }
     }
 
