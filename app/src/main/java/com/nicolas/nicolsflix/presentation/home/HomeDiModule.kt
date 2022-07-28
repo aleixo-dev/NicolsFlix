@@ -8,22 +8,20 @@ import com.nicolas.nicolsflix.presentation.home.data.repository.MovieRepositoryI
 import com.nicolas.nicolsflix.presentation.home.domain.usecase.GetMoviePopularUseCase
 import com.nicolas.nicolsflix.presentation.home.presentation.HomeViewModel
 import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
-import com.nicolas.nicolsflix.common.Constants
-import com.nicolas.nicolsflix.network.MovieRepositoryV2Impl
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 object HomeDiModule {
 
     val instance = module {
         viewModel {
             HomeViewModel(
-                MovieApiRepositoryImpl(movieApi = get()),
+                MovieApiRepositoryImpl(
+                    movieApi = get(),
+                    coroutineDispatcher = Dispatchers.IO
+                ),
                 movieRepositoryV2 = get(),
                 getMoviePopularUseCase = get()
             )
