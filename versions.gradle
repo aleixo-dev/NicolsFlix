@@ -1,0 +1,17 @@
+ext.deps = [:]
+def versions = [:]
+
+versions.kotlin = '1.4.31'
+
+versions.nav = '2.3.5'
+versions.room = '2.3.0'
+versions.koin = '3.1.2'
+versions.glide = '4.12.0'
+
+ext.versions = versions
+
+def deps = [:]
+deps.koin_di = "io.insert-koin:koin-android:$versions.koin"
+
+ext.deps = deps
+
