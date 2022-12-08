@@ -32,8 +32,8 @@ class DetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, /* forward= */ true)
-        returnTransition = MaterialSharedAxis(MaterialSharedAxis.Z, /* forward= */ false)
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, /* forward = */ true)
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.Z, /* forward = */ false)
     }
 
     override fun onCreateView(
@@ -60,16 +60,6 @@ class DetailFragment : Fragment() {
                 getTrailerVideo(it)
             }
         }
-
-        foo(
-            block = {
-                showToast(it.toString())
-            }
-        )
-    }
-
-    private fun foo(block: (Int) -> Unit) {
-        block(11)
     }
 
     private fun observerChangeInViewModel() {
