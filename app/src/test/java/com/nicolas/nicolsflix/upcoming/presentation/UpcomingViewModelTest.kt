@@ -2,19 +2,16 @@ package com.nicolas.nicolsflix.upcoming.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nicolas.nicolsflix.base.MainCoroutineRule
-import com.nicolas.nicolsflix.common.ErrorType
 import com.nicolas.nicolsflix.common.Resource
 import com.nicolas.nicolsflix.common.ViewState
 import com.nicolas.nicolsflix.upcoming.domain.model.UpcomingUiDomain
 import com.nicolas.nicolsflix.upcoming.domain.usecase.GetMovieUpcomingUseCase
-import com.nicolas.nicolsflix.upcoming.utils.DataState
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.confirmVerified
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
-import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
