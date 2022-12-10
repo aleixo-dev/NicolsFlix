@@ -1,3 +1,48 @@
 dependencies {
-    implementation deps.koin_di
+
+    implementation deps.koin
+    implementation deps.glide
+    implementation deps.fragment
+    implementation deps.fragment_navigation
+    implementation deps.fragment_ui
+    implementation deps.dynamic_features
+    implementation deps.youtube_player
+    implementation deps.picasso
+    implementation deps.kotlin
+    implementation deps.core_ktx
+    implementation deps.appcompat
+    implementation deps.material
+    implementation deps.constraint
+    implementation deps.support_legacy
+    implementation deps.livedata
+    implementation deps.view_model
+    implementation deps.splash_screen
+    implementation deps.card_view
+
+    // region network
+    implementation deps.retrofit.squareup
+    implementation deps.retrofit.converter_gson
+
+    implementation deps.okhttp.squareup
+    implementation deps.okhttp.logging_interceptor
+    //endregion
+
+    // region database
+    implementation deps.room.runtime
+    kapt deps.room.compiler
+    implementation deps.room.ktx
+    //endregion
+
+    //region test
+    implementation deps.mockk.io
+    implementation deps.mockk.jvm
+
+    testImplementation deps.junit
+    testImplementation deps.arch
+    testImplementation deps.coroutines_test
+    testImplementation deps.mockito
+    androidTestImplementation deps.junit_ext
+    androidTestImplementation deps.espresso_core
+
+    //endregion
 }
