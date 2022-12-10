@@ -1,17 +1,86 @@
 ext.deps = [:]
+
 def versions = [:]
-
 versions.kotlin = '1.4.31'
-
-versions.nav = '2.3.5'
-versions.room = '2.3.0'
+versions.nav = '2.5.3'
+versions.room = '2.4.3'
 versions.koin = '3.1.2'
 versions.glide = '4.12.0'
-
+versions.retrofit = '2.9.0'
+versions.okhttp = '5.0.0-alpha.3'
+versions.picasso = '2.71828'
+versions.core_ktx = '1.9.0'
+versions.appcompat = '1.5.1'
+versions.material = '1.5.0'
+versions.constraint = '2.1.4'
+versions.legacy_support = '1.0.0'
+versions.swipe_refresh_layout = '1.1.0'
+versions.splash_screen = '1.0.0'
+versions.card_view = '28.0.0'
+versions.fragment = '1.5.5'
+versions.fragment_navigation_ui = '2.5.3'
+versions.module_support = '2.5.3'
+versions.youtube_player = '11.0.1'
+versions.viewmodel_ktx = '2.5.1'
+versions.livedata_ktx = '2.5.1'
+versions.mockk = '1.12.3'
+versions.junit = '4.13.2'
+versions.junit_ext = '1.1.4'
+versions.espresso = '3.5.0'
+versions.arch = '2.1.0'
+versions.coroutines_test = '1.6.1'
+versions.mockito = '2.2.0'
 ext.versions = versions
 
 def deps = [:]
-deps.koin_di = "io.insert-koin:koin-android:$versions.koin"
+deps.koin = "io.insert-koin:koin-android:$versions.koin"
+deps.glide = "com.github.bumptech.glide:glide:$versions.glide"
+deps.fragment = "androidx.fragment:fragment-ktx:$versions.fragment"
+deps.fragment_navigation = "androidx.navigation:navigation-fragment-ktx:$versions.fragment_navigation_ui"
+deps.fragment_ui = "androidx.navigation:navigation-ui-ktx:$versions.fragment_navigation_ui"
+deps.dynamic_features = "androidx.navigation:navigation-dynamic-features-fragment:$versions.module_support"
+deps.youtube_player = "com.pierfrancescosoffritti.androidyoutubeplayer:core:$versions.youtube_player"
+deps.picasso = "com.squareup.picasso:picasso:$versions.picasso"
+deps.kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+deps.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
+deps.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
+deps.material = "com.google.android.material:material:$versions.material"
+deps.constraint = "androidx.constraintlayout:constraintlayout:$versions.constraint"
+deps.support_legacy = "androidx.legacy:legacy-support-v4:$versions.legacy_support"
+deps.livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.livedata_ktx"
+deps.view_model = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.viewmodel_ktx"
+deps.splash_screen = "androidx.core:core-splashscreen:$versions.splash_screen"
+deps.card_view = "com.android.support:cardview-v7:$versions.card_view"
+
+//region test
+deps.junit = "junit:junit:$versions.junit"
+deps.junit_ext = "androidx.test.ext:junit:$versions.junit_ext"
+deps.espresso_core = "androidx.test.espresso:espresso-core:$versions.espresso"
+deps.arch = "androidx.arch.core:core-testing:$versions.arch"
+deps.coroutines_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines_test"
+deps.mockito = "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockito"
+//endregion
+
+def room = [:]
+room.runtime = "androidx.room:room-runtime:$versions.room"
+room.compiler = "androidx.room:room-compiler:$versions.room"
+room.ktx = "androidx.room:room-ktx:$versions.room"
+deps.room = room
+
+def retrofit = [:]
+retrofit.squareup = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.converter_gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+deps.retrofit = retrofit
+
+def okhttp = [:]
+okhttp.squareup = "com.squareup.okhttp3:okhttp:$versions.okhttp"
+okhttp.logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+deps.okhttp = okhttp
+
+def mockk = [:]
+mockk.io = "io.mockk:mockk:$versions.mockk"
+mockk.jvm = "io.mockk:mockk-agent-jvm:$versions.mockk"
+deps.mockk = mockk
 
 ext.deps = deps
 
