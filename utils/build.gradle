@@ -3,7 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-apply from: '../dependencies.gradle'
 
 android {
     compileSdkVersion 32
