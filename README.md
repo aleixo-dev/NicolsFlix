@@ -6,7 +6,7 @@
 
 
 ### 🚀 Projeto 
-NicolsFlix, Aplicativo que exibe as tendências de filmes atuais e similares ,ao qual você selecionou, também é possível pesquisar e salvar filmes, ao salvar o filme ele irá direto à sua lista de filmes. Api usada no projeto para exibição dos filmes [The Movie DB](https://www.themoviedb.org/)
+NicolsFlix, Aplicativo que exibe os principais filmes atuais e similares, ao qual você selecionou, também é possível pesquisar e salvar filmes, ao salvar o filme ele irá direto à sua lista de filmes. Api usada no projeto para exibição dos filmes [The Movie DB](https://www.themoviedb.org/)
 
 
 
