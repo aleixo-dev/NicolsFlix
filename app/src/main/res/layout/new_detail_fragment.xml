@@ -187,10 +187,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
                 tools:listitem="@layout/cast_movie_layout_detail" />
 
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
