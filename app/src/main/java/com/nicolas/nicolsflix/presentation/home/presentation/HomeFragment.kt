@@ -9,29 +9,20 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.transition.platform.MaterialFadeThrough
-import com.google.android.material.transition.platform.MaterialSharedAxis
 import com.nicolas.nicolsflix.adapters.RecyclerSearchAdapter
 import com.nicolas.nicolsflix.adapters.TrendingAdapter
-import com.nicolas.nicolsflix.databinding.HomeFragmentBinding
 import com.nicolas.nicolsflix.common.toLowerCase
 import com.nicolas.nicolsflix.data.model.Movie
+import com.nicolas.nicolsflix.databinding.HomeFragmentBinding
+import com.nicolas.nicolsflix.presentation.home.presentation.HomeViewModel.State
 import com.nicolas.nicolsflix.upcoming.utils.DataState
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.nicolas.nicolsflix.presentation.home.presentation.HomeViewModel.State
 
 class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enterTransition = MaterialFadeThrough()
-        exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
-        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -93,7 +84,7 @@ class HomeFragment : Fragment() {
 
     private fun navigateNext(movie: Movie) {
         val directions =
-            HomeFragmentDirections.actionHomeNavigationToDetailFragment(movie)
+            HomeFragmentDirections.actionHomeNavigationToNewDetailFragment(movie)
         findNavController().navigate(directions)
     }
 
@@ -126,7 +117,7 @@ class HomeFragment : Fragment() {
                 } else {
                     adapter = RecyclerSearchAdapter(it) { onClickMovie ->
                         val directions =
-                            HomeFragmentDirections.actionHomeNavigationToDetailFragment(onClickMovie)
+                            HomeFragmentDirections.actionHomeNavigationToNewDetailFragment(onClickMovie)
                         findNavController().navigate(directions)
                     }
                 }

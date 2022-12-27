@@ -6,6 +6,7 @@ import com.nicolas.nicolsflix.data.network.RetrofitInitializer
 import com.nicolas.nicolsflix.repository.api.MovieApiRepositoryImpl
 import com.nicolas.nicolsflix.repository.database.MovieDaoRepositoryImpl
 import com.nicolas.nicolsflix.network.MovieService
+import com.nicolas.nicolsflix.presentation.new_detail.NewDetailViewModel
 import com.nicolas.nicolsflix.viewmodel.DetailsViewModel
 import com.nicolas.nicolsflix.viewmodel.MyListViewModel
 import com.nicolas.nicolsflix.viewmodel.SearchViewModel
@@ -71,6 +72,12 @@ val detailsModule = module {
                 movieDao = get()
             ), MovieApiRepositoryImpl(movieApi = get(), coroutineDispatcher = Dispatchers.IO)
         )
+    }
+}
+
+val newDetailModule = module {
+    viewModel {
+        NewDetailViewModel(get())
     }
 }
 

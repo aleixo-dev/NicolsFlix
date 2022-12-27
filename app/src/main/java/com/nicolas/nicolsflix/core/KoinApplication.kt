@@ -26,6 +26,7 @@ class KoinApplication : Application() {
                 searchModules,
                 databaseModule,
                 myListModule,
+                newDetailModule,
                 UpcomingDiModule.instance,
                 HomeDiModule.instance,
                 DetailDiModule.instance,
