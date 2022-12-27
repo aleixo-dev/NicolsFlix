@@ -2,6 +2,7 @@ package com.nicolas.nicolsflix.network
 
 import com.nicolas.nicolsflix.data.model.Movie
 import com.nicolas.nicolsflix.data.network.mapper.MovieMapper
+import com.nicolas.nicolsflix.network.models.remote.MovieDetailsResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -27,5 +28,10 @@ class MovieRepositoryV2Impl(
     override suspend fun getTrendingMovie(): Flow<List<Movie>> = flow {
         val response = remote.getTrendingMovie()
         emit(MovieMapper.responseToDomain(response.results))
+    }
+
+    override suspend fun getDetailsMovie(movieId: Int): Flow<MovieDetailsResponse> = flow {
+        val response = remote.getMovieDetails(movieId)
+        emit(response)
     }
 }

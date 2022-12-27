@@ -7,6 +7,7 @@ import com.nicolas.nicolsflix.common.Constants
 import com.nicolas.nicolsflix.data.network.api.popular.response.MoviePopularResponseBody
 import com.nicolas.nicolsflix.network.models.remote.Cast
 import com.nicolas.nicolsflix.network.models.remote.CastDetail
+import com.nicolas.nicolsflix.network.models.remote.MovieDetailsResponse
 import com.nicolas.nicolsflix.network.models.remote.TrailerMovie
 import retrofit2.Response
 import retrofit2.http.GET
@@ -73,4 +74,11 @@ interface MovieService {
         @Query("api_key") apiKey: String = Constants.API_KEY,
         @Query("language") language: String = Constants.LANGUAGE_BR
     )
+
+    @GET(Constants.ENDPOINT_DETAILS)
+    suspend fun getMovieDetails(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String = Constants.API_KEY,
+        @Query("language") language: String = Constants.LANGUAGE_BR
+    ) : MovieDetailsResponse
 }

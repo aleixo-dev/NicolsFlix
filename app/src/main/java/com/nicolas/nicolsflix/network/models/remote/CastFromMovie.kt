@@ -9,7 +9,7 @@ data class CastFromMovie(
     @SerializedName("cast_id")
     val castId: Int,
     @SerializedName("character")
-    val character: String,
+    val character: String?,
     @SerializedName("credit_id")
     val creditId: String,
     @SerializedName("gender")
