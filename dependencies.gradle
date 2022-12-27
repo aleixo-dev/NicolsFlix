@@ -18,6 +18,7 @@ dependencies {
     implementation deps.view_model
     implementation deps.splash_screen
     implementation deps.card_view
+    implementation deps.shimmer
 
     // region network
     implementation deps.retrofit.squareup
@@ -34,8 +35,8 @@ dependencies {
     //endregion
 
     //region test
-    implementation deps.mockk.io
-    implementation deps.mockk.jvm
+    testImplementation deps.mockk.io
+    testImplementation deps.mockk.jvm
 
     testImplementation deps.junit
     testImplementation deps.arch
