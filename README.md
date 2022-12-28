@@ -33,8 +33,6 @@ NicolsFlix, Aplicativo que exibe os principais filmes atuais e similares, ao qua
 > Gson, é uma biblioteca Java que pode ser usada para converter objetos Java em sua representação JSON.
 - **ViewModel**
 > ViewModel, Os componentes de arquitetura fornecem a classe auxiliar ViewModel para controlador de UI, que é responsável por preparar os dados para a UI.
-- **LiveData**
-> LiveData, é uma classe armazenadora de dados observável. Diferente de um observável comum, o LiveData conta com reconhecimento de ciclo de vida, ou seja, ele respeita o ciclo de vida de outros componentes do app.
 - **Room**
 > Room, fornece uma longa camada de abstração sobre o SQLite para permitir o acesso fluente ao banco de dados enquanto aproveita todo o poder do SQLite.
 - **Koin** 
