@@ -25,6 +25,8 @@ NicolsFlix, Aplicativo que exibe os principais filmes atuais e similares, ao qua
 	- <p align=center> <img width=400 align=center src="https://i.imgur.com/W8iEzjo.png"></img> </p>
 
 ### 🔗 Recursos usados
+- **Shimmer**
+> Shimmer, biblioteca que fornece uma maneira fácil de adicionar um efeito de brilho a qualquer exibição em seu aplicativo Android
 - **Retrofit2**
 > Retrofit,  Um cliente HTTP de tipo seguro para Android e Java.
 - **Picasso**
