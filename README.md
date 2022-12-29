@@ -26,21 +26,21 @@ NicolsFlix, Aplicativo que exibe os principais filmes atuais e similares, ao qua
 
 ### 🔗 Recursos usados
 - **Shimmer**
-> Shimmer, biblioteca que fornece uma maneira fácil de adicionar um efeito de brilho a qualquer exibição em seu aplicativo Android
+> Biblioteca que fornece uma maneira fácil de adicionar um efeito de brilho a qualquer exibição em seu aplicativo Android
 - **Retrofit2**
-> Retrofit,  Um cliente HTTP de tipo seguro para Android e Java.
+> Um cliente HTTP de tipo seguro para Android e Java.
 - **Picasso**
-> Picasso, Uma poderosa biblioteca de download e cache de imagens para Android.
+> Uma poderosa biblioteca de download e cache de imagens para Android.
 - **Gson**
-> Gson, é uma biblioteca Java que pode ser usada para converter objetos Java em sua representação JSON.
+> É uma biblioteca Java que pode ser usada para converter objetos Java em sua representação JSON.
 - **ViewModel**
-> ViewModel, Os componentes de arquitetura fornecem a classe auxiliar ViewModel para controlador de UI, que é responsável por preparar os dados para a UI.
+> Os componentes de arquitetura fornecem a classe auxiliar ViewModel para controlador de UI, que é responsável por preparar os dados para a UI.
 - **Room**
-> Room, fornece uma longa camada de abstração sobre o SQLite para permitir o acesso fluente ao banco de dados enquanto aproveita todo o poder do SQLite.
+> Fornece uma longa camada de abstração sobre o SQLite para permitir o acesso fluente ao banco de dados enquanto aproveita todo o poder do SQLite.
 - **Koin** 
-> Koin, Uma estrutura de injeção de dependência pragmática e leve para desenvolvedores Kotlin.
+> Uma estrutura de injeção de dependência pragmática e leve para desenvolvedores Kotlin.
 - **SafeArgs**
-> SafeArgs, permite que você anexe dados a uma operação de navegação, definindo argumentos para um destino, ou seja, destino de perfil de usuário pode receber um argumento de ID de usuário para determinar qual exibir.
+> Permite que você anexe dados a uma operação de navegação, definindo argumentos para um destino, ou seja, destino de perfil de usuário pode receber um argumento de ID de usuário para determinar qual exibir.
 
 ### 🧰 Dependências utilizadas 
 ```
