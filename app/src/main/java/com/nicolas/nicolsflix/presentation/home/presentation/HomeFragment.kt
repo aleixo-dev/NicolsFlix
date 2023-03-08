@@ -19,7 +19,6 @@ import com.nicolas.nicolsflix.data.model.Movie
 import com.nicolas.nicolsflix.upcoming.utils.DataState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.nicolas.nicolsflix.presentation.home.presentation.HomeViewModel.State
-import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : Fragment() {
 
