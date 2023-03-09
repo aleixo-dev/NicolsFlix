@@ -21,6 +21,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@Deprecated("change it details fragment to new version")
 class DetailFragment : Fragment() {
 
     private val viewModel: DetailViewModel by viewModel()

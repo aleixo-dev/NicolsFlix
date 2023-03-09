@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.nicolas.nicolsflix.R
 
 object LoadImage {
     fun load(context: Context, url: String, view: ImageView) {
@@ -26,6 +27,7 @@ fun ImageView.loadImage(context: Context,url: String) {
     Glide.with(context)
         .load(url)
         .centerCrop()
+        .error(R.drawable.ic_round_close_24)
         .placeholder(circularProgressDrawable)
         .diskCacheStrategy(DiskCacheStrategy.DATA)
         .into(this)

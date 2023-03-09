@@ -13,12 +13,15 @@
         <action
             android:id="@+id/action_home_navigation_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_home_navigation_to_newDetailFragment"
+            app:destination="@id/newDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/list_navigation"
         android:name="com.nicolas.nicolsflix.view.mylist.MyListFragment"
         android:label="my_list_fragment"
-        tools:layout="@layout/my_list_fragment" >
+        tools:layout="@layout/my_list_fragment">
         <action
             android:id="@+id/from_list_to_go_details_fragment"
             app:destination="@id/navigation_details" />
@@ -30,7 +33,7 @@
         android:id="@+id/navigation_details"
         android:name="com.nicolas.nicolsflix.view.details.DetailsFragment"
         android:label="details_fragment"
-        tools:layout="@layout/details_fragment" >
+        tools:layout="@layout/details_fragment">
         <argument
             android:name="Movie"
             app:argType="com.nicolas.nicolsflix.data.model.Movie" />
@@ -39,7 +42,7 @@
         android:id="@+id/upcomingFragment"
         android:name="com.nicolas.nicolsflix.upcoming.presentation.UpcomingFragment"
         android:label="upcoming_fragment"
-        tools:layout="@layout/upcoming_fragment" >
+        tools:layout="@layout/upcoming_fragment">
         <action
             android:id="@+id/action_upcomingFragment_to_navigation_details"
             app:destination="@id/navigation_details" />
@@ -53,10 +56,10 @@
         android:label="search_fragment"
         tools:layout="@layout/search_fragment" />
     <fragment
-        tools:layout="@layout/detail_fragment"
         android:id="@+id/detailFragment"
         android:name="com.nicolas.nicolsflix.presentation.detail.presentation.DetailFragment"
-        android:label="DetailFragment" >
+        android:label="DetailFragment"
+        tools:layout="@layout/detail_fragment">
         <argument
             android:name="Movie"
             app:argType="com.nicolas.nicolsflix.data.model.Movie" />
@@ -68,9 +71,19 @@
         android:id="@+id/castFragment"
         android:name="com.nicolas.nicolsflix.presentation.cast.ui.CastFragment"
         android:label="cast_fragment"
-        tools:layout="@layout/cast_fragment" >
+        tools:layout="@layout/cast_fragment">
         <argument
             android:name="personId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        tools:layout="@layout/new_detail_fragment"
+        android:id="@+id/newDetailFragment"
+        android:name="com.nicolas.nicolsflix.presentation.new_detail.NewDetailFragment"
+        android:label="NewDetailFragment">
+        <argument
+            android:name="Movie"
+            app:argType="com.nicolas.nicolsflix.data.model.Movie" />
+    </fragment>
+
 </navigation>

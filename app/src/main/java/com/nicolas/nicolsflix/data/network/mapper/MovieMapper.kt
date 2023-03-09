@@ -1,6 +1,7 @@
 package com.nicolas.nicolsflix.data.network.mapper
 
 import com.nicolas.nicolsflix.data.model.Movie
+import com.nicolas.nicolsflix.data.network.api.popular.response.MoviePopularResponseBody
 import com.nicolas.nicolsflix.data.network.api.popular.response.Result
 
 class MovieMapper {
@@ -27,3 +28,21 @@ class MovieMapper {
         }
     }
 }
+
+fun Result.toMovie() = Movie(
+    id,
+    title,
+    posterPath,
+    backdropPath,
+    overview,
+    voteAverage.toString(),
+    releaseDate
+)
+
+fun MoviePopularResponseBody.toMovieList() = MovieList(
+    movies = results?.map { it.toMovie() } ?: emptyList()
+)
+
+data class MovieList(
+    val movies: List<Movie>? = emptyList()
+)

@@ -30,6 +30,7 @@ versions.espresso = '3.5.0'
 versions.arch = '2.1.0'
 versions.coroutines_test = '1.6.1'
 versions.mockito = '2.2.0'
+versions.shimmer = '0.5.0'
 ext.versions = versions
 
 def deps = [:]
@@ -51,6 +52,7 @@ deps.livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.livedata_kt
 deps.view_model = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.viewmodel_ktx"
 deps.splash_screen = "androidx.core:core-splashscreen:$versions.splash_screen"
 deps.card_view = "com.android.support:cardview-v7:$versions.card_view"
+deps.shimmer = "com.facebook.shimmer:shimmer:$versions.shimmer"
 
 //region test
 deps.junit = "junit:junit:$versions.junit"

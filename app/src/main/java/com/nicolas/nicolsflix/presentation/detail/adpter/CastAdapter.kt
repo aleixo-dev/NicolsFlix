@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.nicolas.nicolsflix.common.loadImage
 import com.nicolas.nicolsflix.databinding.CastMovieLayoutDetailBinding
 import com.nicolas.nicolsflix.network.models.remote.CastFromMovie
 import com.squareup.picasso.Picasso
@@ -15,22 +16,23 @@ class CastAdapter(
 ) : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
 
     class CastViewHolder(
-        binding: CastMovieLayoutDetailBinding,
+        private var binding: CastMovieLayoutDetailBinding,
         private val onCastItemClick: ((cast: CastFromMovie) -> Unit)
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private val imageCharacter = binding.imageViewCharacterMovieDetail
 
         fun bind(casts: CastFromMovie) {
-            Glide.with(itemView.context)
-                .load("https://image.tmdb.org/t/p/original/${casts.profilePath}")
-                .centerCrop()
-                .diskCacheStrategy(DiskCacheStrategy.DATA)
-                .into(imageCharacter)
-
+            imageCharacter.loadImage(
+                itemView.context,
+                "https://image.tmdb.org/t/p/original/${casts.profilePath}"
+            )
             itemView.setOnClickListener {
                 onCastItemClick.invoke(casts)
             }
+
+            binding.textViewCastNameNewDetail.text = casts.name
+            binding.textViewCharacterNewDetail.text = casts.character ?: "houve um erro"
         }
     }
 
