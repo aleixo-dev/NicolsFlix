@@ -3,13 +3,10 @@ package com.nicolas.nicolsflix.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.common.Constants.LOAD_IMAGE_URL
-import com.nicolas.nicolsflix.common.LoadImage
 import com.nicolas.nicolsflix.common.loadImage
 import com.nicolas.nicolsflix.data.model.Movie
 import com.nicolas.nicolsflix.databinding.NewItemsRecyclerViewBinding
-import kotlinx.android.synthetic.main.new_items_recycler_view.view.*
 
 class TrendingAdapter(
     private val listMovie: List<Movie>,

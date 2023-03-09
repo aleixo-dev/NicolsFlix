@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.data.model.Movie
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.items_list_movies.view.*
 
 class MyListAdapter(
     private val listMovie: List<Movie>,
@@ -30,7 +29,7 @@ class MyListAdapter(
 
     class MyListViewHolder(itemView: View, private val itemMovieClickListener: ((movie: Movie) -> Unit)) : RecyclerView.ViewHolder(itemView) {
 
-        private val imgRecommend: ImageView = itemView.imgRecommend
+        private val imgRecommend: ImageView = itemView.findViewById(R.id.imgRecommend)
 
         fun bind(movie: Movie) {
             Picasso.get().load("https://image.tmdb.org/t/p/w500/${movie.poster}").into(imgRecommend)

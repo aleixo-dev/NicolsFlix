@@ -8,13 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.data.model.Movie
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.items_list_movies.view.*
 
 class MovieSimilarAdapter(
     private val listMovie: List<Movie>,
     private val movieClickListener: ((movie: Movie) -> Unit)
-) :
-    RecyclerView.Adapter<MovieSimilarAdapter.SimilarViewHolder>() {
+) : RecyclerView.Adapter<MovieSimilarAdapter.SimilarViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimilarViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -33,7 +31,7 @@ class MovieSimilarAdapter(
         private val movieClickListener: ((movie: Movie) -> Unit)
     ) : RecyclerView.ViewHolder(itemView) {
 
-        private val imgRecommend: ImageView = itemView.imgRecommend
+        private val imgRecommend: ImageView = itemView.findViewById(R.id.imgRecommend)
 
         fun bind(movie: Movie) {
 
@@ -42,7 +40,6 @@ class MovieSimilarAdapter(
 
             itemView.setOnClickListener {
                 movieClickListener.invoke(movie)
-
             }
         }
     }

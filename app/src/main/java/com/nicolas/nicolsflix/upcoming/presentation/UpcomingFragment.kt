@@ -46,6 +46,7 @@ class UpcomingFragment : Fragment() {
                 is ViewState.Empty, is ViewState.Error -> {
                     showToast("No connection internet.")
                 }
+                is ViewState.InvalidParam -> {}
             }
         }
     }

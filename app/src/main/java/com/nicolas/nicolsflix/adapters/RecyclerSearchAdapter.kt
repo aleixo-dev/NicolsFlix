@@ -3,11 +3,12 @@ package com.nicolas.nicolsflix.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nicolas.nicolsflix.R
 import com.nicolas.nicolsflix.data.model.Movie
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.items_search_movie.view.*
 
 class RecyclerSearchAdapter(
     private val listMovieSearch: List<Movie>,
@@ -49,8 +50,8 @@ class RecyclerSearchAdapter(
          */
 
         fun bind(searchMovie: Movie) {
-            val imagePoster = itemView.imageSearch
-            val rating = itemView.searchRating
+            val imagePoster = itemView.findViewById<ImageView>(R.id.imageSearch)
+            val rating = itemView.findViewById<TextView>(R.id.searchRating)
 
             Picasso.get().load("https://image.tmdb.org/t/p/w500/${searchMovie.poster}")
                 .into(imagePoster)

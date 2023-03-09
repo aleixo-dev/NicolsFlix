@@ -10,8 +10,6 @@ class UpcomingRepositoryImpl(
 
     override suspend fun getUpcomingList(): List<UpcomingUiDomain> {
         val response = remoteDataSource.getMovieUpcoming()
-        return response?.let {
-            it.toUiDomain(response.results)
-        }
+        return response.toUiDomain(response.results) ?: emptyList()
     }
 }
