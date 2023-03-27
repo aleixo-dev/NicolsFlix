@@ -20,28 +20,20 @@ NicolasFlix, an app to display top current and similar movies you have selected,
 </p>
 
 
-### 🔧 Arquitetura
+### 🔧 Architecture
 - > MVVM  Model - View - ViewModel
-	- Arquitetura recomendada pelo Google para construção de aplicativos
+	- Google recommended architecture for building apps.
 	- <p align=center> <img width=400 align=center src="https://i.imgur.com/W8iEzjo.png"></img> </p>
 
-### 🔗 Recursos usados
+### 🔗 Resource used:
 - **Shimmer**
-> Biblioteca que fornece uma maneira fácil de adicionar um efeito de brilho a qualquer exibição em seu aplicativo Android
 - **Retrofit2**
-> Um cliente HTTP de tipo seguro para Android e Java.
 - **Picasso**
-> Uma poderosa biblioteca de download e cache de imagens para Android.
 - **Gson**
-> É uma biblioteca Java que pode ser usada para converter objetos Java em sua representação JSON.
 - **ViewModel**
-> Os componentes de arquitetura fornecem a classe auxiliar ViewModel para controlador de UI, que é responsável por preparar os dados para a UI.
 - **Room**
-> Fornece uma longa camada de abstração sobre o SQLite para permitir o acesso fluente ao banco de dados enquanto aproveita todo o poder do SQLite.
 - **Koin** 
-> Uma estrutura de injeção de dependência pragmática e leve para desenvolvedores Kotlin.
 - **SafeArgs**
-> Permite que você anexe dados a uma operação de navegação, definindo argumentos para um destino, ou seja, destino de perfil de usuário pode receber um argumento de ID de usuário para determinar qual exibir.
 
 ### 🧰 Dependências utilizadas 
 ```
