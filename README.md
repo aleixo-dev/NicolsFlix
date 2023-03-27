@@ -5,8 +5,9 @@
 </p>
 
 
-### 🚀 Projeto 
-NicolsFlix, aplicativo que exibe os principais filmes atuais e similares, ao qual você selecionou, também é possível pesquisar e salvar filmes, ao salvar o filme ele irá direto à sua lista de filmes. Api usada no projeto para exibição dos filmes [The Movie DB](https://www.themoviedb.org/)
+### 🚀 Project 
+NicolasFlix, an app to display top current and similar movies you have selected, you can also search and save. 
+#####  Api used in the protect:  [The Movie DB](https://www.themoviedb.org/)
 
 
 
